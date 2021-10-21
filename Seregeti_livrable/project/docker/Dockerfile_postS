@@ -1,0 +1,11 @@
+FROM postgres:latest
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    vim \
+    iputils-ping \
+    net-tools 
+
+ENV POSTGRES_PASSWORD flute
+
+ADD sql/*.sql /docker-entrypoint-initdb.d/
