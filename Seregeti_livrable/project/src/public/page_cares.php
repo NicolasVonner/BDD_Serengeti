@@ -33,22 +33,6 @@
 html,body {font-family:"Verdana",sans-serif}
 h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
 </style>
-<script>
-  // On récupère la valeur du capteur de lumière afin de changer l'arrière plan
-  if(!$("#some_id").attr("checked")){
-    console.log("LA CHECKBOX EST COCHEE");
-    $(document).ready(function(){
-    $(".navbar navbar-inverse").show();
-  });
-  }
-  else{
-    $(document).ready(function(){
-    $(".navbar navbar-inverse").hide();
-  });
-  } 
-
-
-  </script>
 <body>
   <nav class="navbar navbar-inverse">
     <div class="container-fluid">
@@ -58,31 +42,22 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand" href="index.html"> <img src="./logo-v2/logo_gimp.png" alt="Image"></a>
+        <a class="navbar-brand" href="index.php"> <img src="./logo-v2/logo_gimp.png" alt="Image"></a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
-          <li  class="active"><a href="page_cares.html">Animal cares</a></li>
-          <li><a href="page_interventions.html">Group interventions</a></li>
-          <li><a href="page_observations.html">Observations</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li  class="active"><a href="page_cares.php">Animal cares</a></li>
+          <li><a href="page_interventions.php">Group interventions</a></li>
+          <li><a href="page_observations.php">Observations</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </div>
   </nav>
- 
-    <input type="checkbox" id="fdp" name="scales">
-    <label for="scales">Scales</label>
- 
   <form>
-    <h1>Page soins</h1>
-    <p>Ici, vous pouvez renseigner un soins (l'ajouter à la base de donnée) ou consulter ceux déja effectués</p>
-    <p>->Consulter les soins pour un Animal</p>
-    <p>-></p>
-
     <div class="container-fluid">
       <div class="row content">
 
@@ -113,16 +88,16 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
                   <option selected>Recurring care</option>
                   <option>Natural injury</option>
                   <option>Poacher woundy</option>
-                 <!--  <?php 
+                 <!--   <-?php 
 
-                      $obj = new MyClass();
-                      $row = $obj->getData("select city_name from city"); 
-                  ?> 
+                      #$obj = new MyClass();
+                      #$row = $obj->getData("select city_name from city"); 
+                   ?> 
                  
-                  <?php foreach($row as $row){ ?>
+                 <-?php  foreach($row as $row){ ?>
                     <option><?php echo $row['city_name'] ?></option>
             
-               <?php  } ?> -->
+                  <-?php  } ?> -->
                 </select>
               
               </div>
@@ -177,7 +152,6 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
              <?php  } ?> -->
               </select>
             </div> 
-
             <div class="form-group col-md-4">
               <label for="inputType">Care type</label>
               <select id="inputType" class="form-control">
@@ -213,8 +187,5 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
     <footer class="container-fluid">
       <p>Footer Text</p>
     </footer>
-    
-
 </body>
-
 </html>

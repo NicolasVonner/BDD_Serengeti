@@ -43,17 +43,17 @@ h1,h2,h3,h4,h5,h6 {font-family:"Segoe UI",sans-serif}
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>                        
         </button>
-        <a class="navbar-brand" href="index.html"> <img src="./logo-v2/logo_gimp.png" alt="Image"></a>
+        <a class="navbar-brand" href="index.php"> <img src="./logo-v2/logo_gimp.png" alt="Image"></a>
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="page_cares.html">Animal cares</a></li>
-          <li><a href="page_interventions.html">Group interventions</a></li>
-          <li class="active"><a href="page_observations.html">Observations</a></li>
+          <li><a href="index.php">Home</a></li>
+          <li><a href="page_cares.php">Animal cares</a></li>
+          <li><a href="page_interventions.php">Group interventions</a></li>
+          <li class="active"><a href="page_observations.php">Observations</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
         </ul>
       </div>
     </div>
