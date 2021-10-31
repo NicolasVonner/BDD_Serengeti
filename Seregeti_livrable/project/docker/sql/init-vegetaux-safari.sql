@@ -1,0 +1,66 @@
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Fabaceae', 'Acacia faux-gommier', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Palmacée', 'Palmier doum', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Passifloraceae', 'Adenia pechuelii', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Podocarpaceae', 'Afrocarpus gracilior', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Amaranthaceae', 'Anabasis aretioides', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Orchidaceae', 'Angraecum egertonii', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Capparaceae', 'Buchholzia coriacea', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Sapindaceae', 'Chytranthus', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Burseraceae', 'Commiphora sessiliflora', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Apiaceae', 'Daucus biseriatus', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Apiaceae', 'Daucus glaberrimus', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Apiaceae', 'Daucus sahariensis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Apiaceae', 'Daucus syrticus', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Fabaceae', 'Duparquetia orchidacea', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Poaceae', 'Eragrostis palustris', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Apiaceae', 'Ferula marmarica', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Poaceae', 'Hypseochloa', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Malvaceae', 'Hibiscus hareyae', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Poaceae', 'Hypseochloa matengoensis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Convolvulaceae', 'Ipomoea flavivillosa', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Dipterocarpaceae', 'Monotes lutambensis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Iridaceae', 'Moraea callista', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Sapotaceae', 'Neohemsleya', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Sapotaceae', 'Vitellariopsis cuneata', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Sapotaceae', 'Vitellariopsis cuneata', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Canellaceae', 'Warburgia elongata', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Convolvulaceae', 'Astripomoea cephalantha', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Fabaceae', 'Baphia pauloi', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Fabaceae', 'Baphia puguensis ', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Ebenaceae', 'Diospyros magogoana', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Fabaceae', 'Erythrina schliebenii', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Euphorbiaceae', 'Euphorbia biselegans', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Euphorbiaceae', 'Euphorbia bisglobosa', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Euphorbiaceae', 'Euphorbia tetracanthoides', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Euphorbiaceae', 'Croton aceroides', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Vitaceae', 'Cissus kouandeensis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Convolvulaceae', 'Ipomoea beninensis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Acanthaceae', 'Thunbergia atacorensis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Asteraceae', 'Galactites mutabilis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Fabaceae', 'Hippocrepis brevipetala', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Plantaginaceae', 'Linaria reflexa', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Poaceae', 'Lygeum spartum', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Asteraceae', 'Pulicaria filaginoides', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Fagaceae', ' chêne afarès', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Papaveraceae', 'Rupicapnos numidica', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values('Scrophulariaceae', 'Scrophularia tenuipes', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Caprifoliaceae', 'Sixalix farinosa ', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Ebenaceae', 'Diospyros katendei ', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Moraceae', 'Ficus katendei', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Aloeaceae', 'Aloe africana', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values('Xanthorrhoeaceae', 'Aloe peglerae', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Aloeaceae', 'Aloe pluridens', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Aloeaceae', 'Aloe speciosa', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Aizoaceae', 'Carpobrotus edulis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Orchidaceae', 'Disa uniflora', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Droseraceae', 'Drosera affinis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Liliaceae', 'Chlorophytum comosum', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Crassulaceae', 'Crassula capitella', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Crassulaceae', 'Crassula marnieriana', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Zamiaceae', 'Encephalartos middelburgensis', 'Plante');
+INSERT INTO VEGETAL("familleV", "especeV","typeV") values ('Moraceae', 'Ficus bizanae', 'Plante');
+
+
+
+
+
