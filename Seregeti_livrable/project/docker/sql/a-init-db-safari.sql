@@ -55,9 +55,9 @@ CREATE TABLE "soin" (
 );
 
 CREATE TABLE "zone" (
-  "nomZone" varchar(255) PRIMARY KEY NOT NULL,
+  "nomZone" varchar(255) PRIMARY KEY  NOT NULL,
   "superficie" int,
-  "responsable" int
+  "responsable" int NOT NULL
 );
 
 CREATE TABLE "intervention" (
@@ -101,14 +101,13 @@ CREATE TABLE "ressencement_V" (
 
 CREATE TABLE "utilisateur" (
   "identifiant" int  PRIMARY KEY NOT NULL,
-  "mdp" varchar(130) NOT NULL
+  "mdp" varchar(255) 
 );
 
 ALTER TABLE "soin" ADD FOREIGN KEY ("refS") REFERENCES "soignant" ("refS");
 
 ALTER TABLE "soin" ADD FOREIGN KEY ("nomZone") REFERENCES "zone" ("nomZone");
 
-ALTER TABLE "soin" ADD FOREIGN KEY ("nomZone") REFERENCES "zone" ("nomZone");
 
 ALTER TABLE "soin" ADD FOREIGN KEY ("codeA") REFERENCES "animal" ("codeA");
 
@@ -131,3 +130,5 @@ ALTER TABLE "ressencement_A" ADD FOREIGN KEY ("zone") REFERENCES "zone" ("nomZon
 ALTER TABLE "ressencement_V" ADD FOREIGN KEY ("vegetal") REFERENCES "vegetal" ("codeV");
 
 ALTER TABLE "ressencement_V" ADD FOREIGN KEY ("zone") REFERENCES "zone" ("nomZone");
+
+ALTER TABLE "zone" ADD FOREIGN KEY ("responsable") REFERENCES "personnel" ("codeP");
