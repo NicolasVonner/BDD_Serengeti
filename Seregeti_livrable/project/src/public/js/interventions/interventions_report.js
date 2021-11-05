@@ -1,9 +1,8 @@
 import { checkField, addErrorText } from "../function/functions.js";
 
-
 window.envoyerFormulaireReport = function envoyerFormulaireReport()
 {
-    let report = document.getElementById("report-care");
+    let report = document.getElementById("report-intervention");
     report.innerHTML = "";
     let formulaire = [...document.getElementById("report").elements];
 
@@ -14,7 +13,7 @@ window.envoyerFormulaireReport = function envoyerFormulaireReport()
             formData.append(element.name,element.value);
         });
 
-        fetch("http://localhost:8000/php/requete/soins/soins_report.php?",{
+        fetch("http://localhost:8000/php/requete/interventions/interventions_report.php?",{
             method: 'POST',
             mode: 'no-cors',
             cache: 'default',

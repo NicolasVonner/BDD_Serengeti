@@ -1,0 +1,63 @@
+html, body{
+    font-family:"Verdana",sans-serif;
+  }
+  
+  h1,h2,h3,h4,h5,h6 {
+    font-family:"Segoe UI",sans-serif
+  }
+  
+  /* Remove the navbar's default margin-bottom and rounded borders */ 
+  .navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+  }
+  
+  .navbar-brand{
+    padding-top: 0;
+  } 
+  
+  
+  .column-consult ul li {
+    background-color: cyan;
+    border-color: black;
+    border-style: solid;
+    font-weight: bold;
+    display: inline-block;
+    vertical-align:middle;
+    height: 50px;
+    width: 150px;
+  }
+  
+  .row-consult ul li {
+    background-color: lightgray;
+    border-color: grey;
+    border-style: solid;
+    display: inline-block;
+    vertical-align: middle;
+    height: 50px;
+    width: 150px;
+  }
+
+  .button-comment {
+    height: 45px;
+    width: 145px;
+    background-color: lightgray;
+  }
+  
+  #consult-care-scroll{
+    min-height: 200px;
+    max-height: 500px;
+    overflow-y: scroll;
+  }
+
+.consult-care-scroll-padding {
+    padding-left: 14px;
+}
+  
+  
+  /* Add a gray background color and some padding to the footer
+  <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>*/
+  footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+  }

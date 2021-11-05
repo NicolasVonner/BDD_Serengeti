@@ -1,9 +1,17 @@
-import { checkField, createModal } from "../function/functions.js";
+import { checkField } from "../function/functions.js";
+
+document.getElementById("typeRessencementConsult").addEventListener("change",(event)=>{
+    let titleReport = document.getElementById("title-consult-espece");
+    if (event.target.value == "Animal")
+        titleReport.innerHTML = "Consulter un Animal";
+    else
+        titleReport.innerHTML = "Consulter un Végétal";
+});
 
 
 window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
 {
-    let consult = document.getElementById("consult-care");
+    let consult = document.getElementById("consult-ressencement");
     consult.innerHTML = "";
     let formulaire = [...document.getElementById("consult").elements];
 
@@ -15,7 +23,7 @@ window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
             arg += index != formulaire.length-1 ? element.name + "=" + element.value + "&" : element.name + "=" + element.value;
         });
 
-        fetch("http://localhost:8000/php/requete/soins/soins_consult.php?"+arg,{
+        fetch("http://localhost:8000/php/requete/observations/observations_consult.php?"+arg,{
             method: 'GET',
             mode: 'cors',
             cache: 'default' 
@@ -24,7 +32,7 @@ window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
         .then((html)=>{
             if (html.length > 0)
             {
-                let arrayColumn = ["dateS","codeA","typeS","commentaireS","nomZone","especeA","specialite"];
+                let arrayColumn = [formulaire[0].value == "Animal" ? "animal" : "vegetal","zone","nombre","date"];
                 let column = document.createElement("div");
                 column.className = "column-consult";
                 let columnHTML = '<div><ul>';
@@ -38,21 +46,16 @@ window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
                 let table = document.createElement("div");
                 if (html.length > 8)
                 {
-                    table.id = "consult-care-scroll";
-                    table.className = "consult-care-scroll-padding";
+                    table.id = "consult-ressencement-scroll";
+                    table.className = "consult-ressencement-scroll-padding";
                 }
                 table.innerHTML = '<ul>';
-                html.forEach((rowData, index)=>{
+                html.forEach((rowData)=>{
                     let row = document.createElement("div");
                     row.className = "row-consult";
                     let rowHTML = '<ul>';
-                    let rowContent = "";
                     arrayColumn.forEach((nom)=>{
-                        if (nom == "commentaireS" && rowData[nom].length > 20)
-                            rowContent = `<li>${createModal(rowData[nom],index)}</li>`;
-                        else
-                            rowContent = `<li><p>${rowData[nom]}</p></li>`;
-                        rowHTML += rowContent;
+                        rowHTML += `<li><p>${rowData[nom]}</p></li>`;
                     });
                     row.innerHTML = rowHTML.trim();
                     table.appendChild(row);

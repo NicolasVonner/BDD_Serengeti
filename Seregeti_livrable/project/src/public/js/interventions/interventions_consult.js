@@ -1,10 +1,9 @@
 import { checkField, createModal } from "../function/functions.js";
 
-
 window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
 {
-    let consult = document.getElementById("consult-care");
-    consult.innerHTML = "";
+    let consult = document.getElementById("consult-intervention");
+    consult.textContent = "";
     let formulaire = [...document.getElementById("consult").elements];
 
 
@@ -15,16 +14,17 @@ window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
             arg += index != formulaire.length-1 ? element.name + "=" + element.value + "&" : element.name + "=" + element.value;
         });
 
-        fetch("http://localhost:8000/php/requete/soins/soins_consult.php?"+arg,{
+        fetch("http://localhost:8000/php/requete/interventions/interventions_consult.php?"+arg,{
             method: 'GET',
             mode: 'cors',
             cache: 'default' 
         })
         .then(resp=>resp.json())
         .then((html)=>{
+            console.log(html);
             if (html.length > 0)
             {
-                let arrayColumn = ["dateS","codeA","typeS","commentaireS","nomZone","especeA","specialite"];
+                let arrayColumn = ["dateI","codeEquipe","nomZone","commentaireI"];
                 let column = document.createElement("div");
                 column.className = "column-consult";
                 let columnHTML = '<div><ul>';
@@ -38,8 +38,8 @@ window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
                 let table = document.createElement("div");
                 if (html.length > 8)
                 {
-                    table.id = "consult-care-scroll";
-                    table.className = "consult-care-scroll-padding";
+                    table.id = "consult-intervention-scroll";
+                    table.className = "consult-intervention-scroll-padding";
                 }
                 table.innerHTML = '<ul>';
                 html.forEach((rowData, index)=>{
@@ -48,7 +48,7 @@ window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
                     let rowHTML = '<ul>';
                     let rowContent = "";
                     arrayColumn.forEach((nom)=>{
-                        if (nom == "commentaireS" && rowData[nom].length > 20)
+                        if (nom == "commentaireI" && rowData[nom].length > 20)
                             rowContent = `<li>${createModal(rowData[nom],index)}</li>`;
                         else
                             rowContent = `<li><p>${rowData[nom]}</p></li>`;
