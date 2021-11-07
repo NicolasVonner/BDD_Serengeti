@@ -13,11 +13,12 @@
   </head>
 
   <body>
-    
+  
     <?php
-      include("./php/index/connection.php")
+    // just a test for connexion class
+     /*require_once('./php/index/connection.php');
+     $r = new Connection();*/
     ?>
-
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">

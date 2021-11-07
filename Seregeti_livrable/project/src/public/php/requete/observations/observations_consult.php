@@ -1,23 +1,19 @@
 <?php
     libxml_use_internal_errors(true);
 
+    require_once('../../index/connection.php');
+    $r = new Connection();
+
     if(isset($_GET["typeRessencementConsult"])) // si une valeur en particulier est prête alors
     {
-        $host = '172.19.0.2';
-        $dbname = 'postgres';
-        $username = 'postgres';
-        $password = 'flute';
-        $dsn = "pgsql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password";
         
-        try {
-        $conn = new PDO($dsn);
-            if ($conn) {
+            if ($r->link) {
 
                 $req = $_GET["typeRessencementConsult"] == "Animal" ? 
                 'SELECT * from "ressencement_A" WHERE "date" BETWEEN ? AND ?' 
                 : 'SELECT * from "ressencement_V" WHERE "date" BETWEEN ? AND ?';
 
-                $statement = $conn->prepare($req);
+                $statement = $r->link->prepare($req);
                 $statement->bindParam(1,$_GET["dateIntervention1"]);
                 $statement->bindParam(2,$_GET["dateIntervention2"]);
                 $statement->execute();
@@ -36,10 +32,7 @@
             {
                 echo "Erreur lors de la connection à la BDD";
             }
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+        
     }
     else
     {

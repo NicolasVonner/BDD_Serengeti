@@ -1,19 +1,12 @@
 <?php
     libxml_use_internal_errors(true);
 
-    if(isset($_POST["typeRessencementReport"])) // si chaque valeur des arguments en get ne sont pas vides alors
-    {
-        $host = '172.19.0.2';
-        $dbname = 'postgres';
-        $username = 'postgres';
-        $password = 'flute';
+    require_once('../../index/connection.php');
+    $r = new Connection();
 
-        $dsn = "pgsql:host=$host;port=5432;dbname=$dbname;user=$username;password=$password";
-        
-        try {
-        $conn = new PDO($dsn);
-        
-            if ($conn) {
+    if(isset($_POST["typeRessencementReport"])) // si chaque valeur des arguments en get ne sont pas vides alors
+    {     
+            if ($r->link) {
 
                 $date = date("Y-m-d\TH:i:s", strtotime($_POST["dateRessencement"]));
 
@@ -21,7 +14,7 @@
                 'INSERT INTO "ressencement_A" ("animal", "zone", "nombre", "date") VALUES (?, ?, ?, ?)'
                 : 'INSERT INTO "ressencement_V" ("vegetal", "zone", "nombre", "date") VALUES (?, ?, ?, ?)';
 
-                $statement = $conn->prepare($req);
+                $statement = $r->link->prepare($req);
                 $statement->bindParam(1,$_POST["referral"]);
                 $statement->bindParam(2,$_POST["zoneTypeReport"]);
                 $statement->bindParam(3,$_POST["number"]);
@@ -37,10 +30,7 @@
                     echo "Erreur lors de l'envoie à la BDD";
                 }
             }
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
+
     }
     else
     {
