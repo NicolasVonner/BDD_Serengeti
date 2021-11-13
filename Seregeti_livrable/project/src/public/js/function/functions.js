@@ -1,3 +1,10 @@
+
+export const disableAllField = (formElement, isDesabled) => {
+    formElement.forEach((field)=>{
+        field.disabled = isDesabled;
+    });
+}
+
 export const checkField = (arrayField, excludeField = [""])  => {
     let isEveryFieldFilled = true;
 
@@ -45,4 +52,49 @@ export const createModal = (text, id) => {
         </div>
     `;
     return html.trim();
+}
+
+export const displaySQLResult = (result, parentDiv) => {
+    if (result.length > 0)
+    {
+        let column = document.createElement("div");
+        column.className = "column-consult";
+        let columnHTML = '<div><ul>';
+        Object.keys(result[0]).forEach((nom)=> {
+            columnHTML += `<li><p>${nom}</p></li>`;
+        });
+        columnHTML += "</div>";
+        column.innerHTML = columnHTML.trim();
+        parentDiv.appendChild(column);
+
+        let table = document.createElement("div");
+        if (result.length > 8)
+        {
+            table.id = "consult-ressencement-scroll";
+            table.className = "consult-ressencement-scroll-padding";
+        }
+        table.innerHTML = '<ul>';
+        result.forEach((rowData, index)=>{
+            let row = document.createElement("div");
+            row.className = "row-consult";
+            let rowHTML = '<ul>';
+            let rowContent = "";
+            Object.keys(rowData).forEach((nom)=>{
+                if (nom.includes("commentaire") && rowData[nom].length > 20)
+                    rowContent = `<li>${createModal(rowData[nom],index)}</li>`;
+                else
+                    rowContent = `<li><p>${rowData[nom]}</p></li>`;
+                rowHTML += rowContent;
+            });
+            row.innerHTML = rowHTML.trim();
+            table.appendChild(row);
+        });
+        parentDiv.appendChild(table);
+    }
+    else
+    {
+        let error = document.createElement("p");
+        error.innerText = "Aucunes données trouvées";
+        parentDiv.appendChild(error);
+    }
 }

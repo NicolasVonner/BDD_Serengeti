@@ -16,6 +16,9 @@ html, body{
     padding-top: 0;
   } 
   
+  .column-consult ul{
+    display: inline-flex;
+  }
   
   .column-consult ul li {
     background-color: cyan;
@@ -26,6 +29,10 @@ html, body{
     vertical-align:middle;
     height: 50px;
     width: 150px;
+  }
+
+  .row-consult ul{
+    display: inline-flex;
   }
   
   .row-consult ul li {
@@ -44,10 +51,16 @@ html, body{
     background-color: lightgray;
   }
   
-  #consult-care-scroll{
+  .consult-care-scroll-y{
     min-height: 200px;
     max-height: 500px;
     overflow-y: scroll;
+  }
+
+  .consult-care-scroll-x{
+    min-width: 300px;
+    max-width: 1200px;
+    overflow-x: scroll;
   }
 
 .consult-care-scroll-padding {
