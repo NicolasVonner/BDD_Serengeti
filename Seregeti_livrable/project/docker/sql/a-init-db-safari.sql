@@ -86,7 +86,6 @@ CREATE TABLE "equipe" (
 CREATE TABLE "ressencement_A" (
   "animal" int NOT NULL,
   "zone" varchar(255) NOT NULL,
-  "nombre" int,
   "date" date NOT NULL DEFAULT now(),
   PRIMARY KEY ("animal", "zone", "date")
 );
@@ -94,7 +93,6 @@ CREATE TABLE "ressencement_A" (
 CREATE TABLE "ressencement_V" (
   "vegetal" int NOT NULL,
   "zone" varchar(255) NOT NULL,
-  "nombre" int,
   "date" date NOT NULL DEFAULT now(),
   PRIMARY KEY ("vegetal", "zone", "date")
 );
