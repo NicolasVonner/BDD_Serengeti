@@ -6,19 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/index.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./js/libs/jquery/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
     </style>
   </head>
 
   <body>
-  
-    <?php
-    // just a test for connexion class
-     /*require_once('./php/index/connection.php');
-     $r = new Connection();*/
-    ?>
     <nav class="navbar navbar-inverse">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -219,29 +213,155 @@
     </div>
       
     <div class="container text-center">    
-      <h3>What We Do</h3><br>
-      <div class="row">
-        <div class="col-sm-4">
-          <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-          <p>Current Project</p>
-        </div>
-        <div class="col-sm-4"> 
-          <img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image">
-          <p>Project 2</p>    
-        </div>
-        <div class="col-sm-4">
-          <div class="well">
-            <p>Some text..</p>
-          </div>
-          <div class="well">
-            <p>Some text..</p>
-          </div>
-        </div>
-      </div>
+      <h3>Serregenti en quelque chiffres : </h3><br>
     </div><br>
+    <div class="d-flex justify-content-center"> 
 
-    <footer class="container-fluid text-center">
-      <p>Footer Text</p>
+    <?php
+    require_once('./php/index/connection.php');
+      $r=new Connection();
+      $conn = $r->link;
+      $req='SELECT COUNT(*) FROM "personnel"';
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req=$statement->fetchall();
+      echo '<svg height="500" width="500" viewBox="0 0 20 20">
+ 
+    
+      
+    <circle r="5" cx="10" cy="10" fill="transparent"
+          stroke="#80534d"
+          stroke-width="10"
+       
+          stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+          transform="rotate(-90) translate(-20)" />
+          <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Employés</text>
+          <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count"]).'</text>    
+      </svg>';
+
+
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req=$statement->fetchall();
+      
+      /*$req='SELECT COUNT(*), "typeS" FROM SOIN GROUP BY "typeS"';
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req=$statement->fetchall(); */
+      //var_dump($test_req);
+      
+      $req='SELECT COUNT(*) FROM SOIN WHERE "typeS"=\'Blessure_braconier\'';
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req=$statement->fetchall();
+
+      echo '<svg height="500" width="500" viewBox="0 0 20 20">
+      <style type="text/css">
+    .st4{font-family:Montserrat", Arial, sans-serif; fill:white;} 
+    </style>
+      
+        
+      <circle r="5" cx="10" cy="10" fill="transparent"
+            stroke="#880808"
+            stroke-width="10"
+         
+            stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+            transform="rotate(-90) translate(-20)" />
+            <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Bléssure </text>   
+            <text class="st4" font-family="Montserrat" fill="white" x="10" y="9" alignment-baseline="central" text-anchor="middle" font-size="2.5">par Braconnier</text>  
+            <text class="st4" font-family="Montserrat" fill="white" x="10" y="13" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count"]).'</text>    
+            </svg>';
+      
+
+      $req='SELECT INTERVENTION."nomZone",COUNT(*)FROM "intervention" GROUP BY INTERVENTION."nomZone" ORDER  BY COUNT(*) DESC';
+
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req2=$statement->fetchall();
+      //var_dump($test_req2);
+
+     /* echo ' <svg height="500" width="500" viewBox="0 0 20 20">
+          <circle r="10" cx="10" cy="10" fill="#333" />';
+
+      
+
+     echo' 
+     
+     <circle r="5" cx="10" cy="10" fill="transparent"
+     stroke="#80534d"
+     stroke-width="10"
+  
+     stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+     transform="rotate(-90) translate(-20)" />     
+     
+     <circle r="5" cx="10" cy="10" fill="transparent"
+            stroke="red"
+            stroke-width="10"
+            stroke-dasharray="calc(70 * 31.5 / 100) 31.5"
+            transform="rotate(-90) translate(-20)" />
+      <circle r="5" cx="10" cy="10" fill="transparent"
+            stroke="#80534d"
+            stroke-width="10"
+         
+            stroke-dasharray="calc(50 * 31.5 / 100) 31.5"
+            transform="rotate(-90) translate(-20)" />
+          
+            <circle r="5" cx="10" cy="10" fill="transparent"
+                  stroke="red"
+                  stroke-width="10"
+               
+                  stroke-dasharray="calc(70 * 31.5 / 100) 31.5"
+                  transform="rotate(-90) translate(-20)" />';
+              
+              
+           
+        echo '</svg>'; */
+      
+      $req='SELECT COUNT(*) FROM "animal"';
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req=$statement->fetchall();
+      echo '<svg height="500" width="500" viewBox="0 0 20 20">
+  
+      
+    <circle r="5" cx="10" cy="10" fill="transparent"
+          stroke="#f96a3e"
+          stroke-width="10"
+       
+          stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+          transform="rotate(-90) translate(-20)" />
+          <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Animaux</text>
+          <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count"]).'</text>    
+      </svg>';
+      $req='SELECT COUNT(*) FROM "vegetal"';
+
+
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req=$statement->fetchall();
+      echo '<svg height="500" width="500" viewBox="0 0 20 20">      
+    <circle r="5" cx="10" cy="10" fill="transparent"
+          stroke="#4b7632"
+          stroke-width="10"
+       
+          stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+          transform="rotate(-90) translate(-20)" />
+          <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Végétaux</text>
+          <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count"]).'</text>    
+      </svg>';
+
+    ?>
+
+   
+     
+      
+     
+    <div>
+    <footer class="container-fluid text-center" style="background-color:#333; color: #9d9d9d;">
+
+      <div class="text-center p-3" >
+    © 2021 Copyright: Adrien Lamé, Nicolas Vonner, Mathias Rando
+  </div>
     </footer>
 
   </body>
