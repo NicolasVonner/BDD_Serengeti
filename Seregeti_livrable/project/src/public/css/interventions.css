@@ -21,8 +21,9 @@ html, body{
   }
   
   .column-consult ul li {
-    background-color: cyan;
-    border-color: black;
+    background-color: #880808;
+    border-color: #212121;
+    color:#F8F8FF;
     border-style: solid;
     font-weight: bold;
     display: inline-block;
