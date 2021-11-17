@@ -15,6 +15,8 @@
   </head>
   
   <body>
+
+  
     <?php
 
     
@@ -25,23 +27,7 @@
         </script>'; 
     //header('Location: ../connexion.php?error=2');
   }
-  else {
-    $message = [];
-  // Si le jeton CSRF du formulaire ne correspond pas à celui stocké en session
-  // ou que le jeton est expiré
-;
-    if ($_SESSION['jeton_valid'] < new DateTime()) {
-      $message['message'] = "Erreur de jeton.";
-      echo '<script language="Javascript">
-      document.location.replace("http://localhost:8000/pages/connexion.php?error=2");
-      </script>'; */
-      //header('Location: ../connexion.php?error=2');
-    } else {
-    //suppression des variables de session concernant le jeton
-      unset($_SESSION['jeton']);
-      unset($_SESSION['jeton_valid']);
-    }
-  }
+  
 
     ?>
     
@@ -73,14 +59,92 @@
     <h1>Page de login</h1>
     <p>Cette page permet aux responsables de zone de se connecter afin d'accéder à leur espace</p>
     <p>Les reponsables de zones peuvent consulter les information du personnel (salaire, datearrivee, ....)</p>
+    
+    
+    <form id="report" method="post" action="http://localhost:8000/php/requete/personel/personel_create.php">
+            <div class="row">
 
+              <div class="form-group col-md-5">
+              <label for="nom">Nom *:</label>
+    <input class="form-control" type="text" id="nom" name="nom" required minlength="2" maxlegth="255"  >
+    <label for="prenom">Prenom *:</label>
+    <input class="form-control" type="text" id="prenom" name="prenom" required minlength="2" maxlegth="255" >
+   
+    <label for="age">Age * :</label>
+    <input class="form-control" type="number" id="age" name="age" min="0" max="100" value="23">
+    Sexe * : <INPUT  type="radio" name="sexeP" value="M" checked> Homme <INPUT type="radio" name="sexeP" value="F"> Femme
+    <br />
+    <label for="salaire">Salaire * :</label>
+    <input class="form-control" type="number" id="salaire" name="salaire" min="200" max="10000" value="1500">
+    <br />
+    </div>
+
+    
+    <div class="form-group col-md-5">
+    <label>type de personel</label>
+    <select class="form-control" name="typeP" id="typeP">
+        <option value="soignant">Soigniant</option>
+        <option value="garde">Garde</option>
+    </select>
+      <br />
+      
+</div>
+            <div class="form-group col-md-5">
+                <label>Date d'arrivée</label>
+                <input id="dateArrivee" name="dateArrivee" type="datetime-local" value="2021-10-07T20:00">
+              </div>
+
+
+      
+            </div>
+          
+          <div class="form-group col-md-5">
+          <label>Type de contract</label>
+        <select class="form-control" name="typeC" id="typeC">
+        <option value="CDI">CDI</option>
+        <option value="CDD">CDD</option>
+        <option value="Alternance">Alternance</option>
+        <option value="Stage">Stage</option>
+    </select>
+    
+    
+          </div>
+          <div class="form-group col-md-5">
+          <label for="specialite">Spécialité *:</label>
+    <input class="form-control" type="text" id="specialite" name="specialite" required minlength="2" maxlegth="255" >
+
+    </div>
+<div class="form-group col-md-5">
+<label>equipe</label>
+    <select class="form-control" name="equipe" id="equipe">
+<?php
+       $r=new Connection();
+       $conn = $r->link;
+        $req = 'SELECT equipe."codeE", equipe."nomEquipe" FROM equipe';
+        $statement = $conn->prepare($req);
+        $statement->execute();
+        $result = $statement->fetchAll();
+        //var_dump($result);
+        foreach ($result as $value) {
+          
+            echo '<option value="'.$value["codeE"].'">'.$value["nomEquipe"].'</option>';
+        }
+  ?>
+  </select>
+  <input class="btn btn-primary form-control" type="submit" value="Envoyer">
+    </form>
+    </div>
+    <div class="container text-center">    
+      <h3> Soigniant : </h3><br>
+    </div>
+
+    
 
     <?php
     
     echo "Bonjour ".$_SESSION["utilisateur"];
     
-    $r=new Connection();
-    $conn = $r->link;
+    
       $req='SELECT "nom", "prenom", "age", "sexeP", "typeContrat", "salaire", "dateArrivee", soignant."specialite" FROM personnel, soignant WHERE personnel."codeP"=soignant."refS"';
       $statementS = $conn->prepare($req);
       $statementS->execute();
@@ -116,9 +180,14 @@
   </tr>';
 }
   
-echo "</tbody> </table>";
-
-      $req='SELECT "nom", "prenom", "age", "sexeP", "typeContrat", "salaire", "dateArrivee", equipe."nomEquipe" FROM personnel, garde, equipe WHERE personnel."codeP"=garde."codeP" and garde."codeE"=equipe."codeE"';
+echo "</tbody> </table>"; ?>
+<div class="container text-center">    
+      <h3> Gardes : </h3><br>
+    </div>
+<?php
+      //$req='SELECT "nom", "prenom", "age", "sexeP", "typeContrat", "salaire", "dateArrivee", equipe."nomEquipe" FROM personnel, garde, equipe WHERE personnel."codeP"=garde."codeP" and garde."codeE"=equipe."codeE"';
+      $req='SELECT * FROM personnel, garde, equipe WHERE garde."codeE"=equipe."codeE" and  personnel."codeP"=garde."codeP" ';
+      //$req='SELECT "nom", "prenom", "age", "sexeP", "typeContrat", "salaire", "dateArrivee" FROM personnel, garde WHERE personnel."codeP"=garde."codeP"';
       $statementG = $conn->prepare($req);
       $statementG->execute();
       $resultatG=$statementG->fetchAll();
@@ -156,12 +225,15 @@ echo "</tbody> </table>";
     echo "</tbody> </table>";
         
     ?>
-    <div class="container text-center">    
+    <div hidden class="container text-center">    
       <h3>vous pouvez également consulter : </h3><br>
       <a href="#" class="btn btn-primary">Animaux/Végétaux</a>
     </div><br>
    
-
+    <script>
+        //document.getElementById('equipe').style.display = 'none';
+        //document.getElementById('specialite').style.display = 'none';
+      </script>
 
     <footer class="container-fluid text-center">
       <p>Footer Text</p>
