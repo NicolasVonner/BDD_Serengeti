@@ -7,7 +7,7 @@
     if ($r->link) {
         if(isset($_GET["typeZoneConsult"]))
         {
-            $req = 'SELECT DISTINCT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS" WHERE soin."codeA"=? AND soin."refS"=? AND soin."typeS"=? AND soin."nomZone"=?';
+            $req = 'SELECT DISTINCT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS" WHERE soin."codeA"=? AND soin."refS"=? AND soin."typeS"=? AND soin."nomZone"=? and soignant."refS"=personnel."codeP"';
             $statement = $r->link->prepare($req);
             $statement->bindParam(1,$_GET["referralAnimal"]);
             $statement->bindParam(2,$_GET["referralCaregiver"]);
@@ -17,7 +17,7 @@
         }
         else
         {
-            $req = 'SELECT * FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS"';
+            $req = 'SELECT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS", personnel WHERE soignant."refS"=personnel."codeP"';
             $statement = $r->link->prepare($req);
             $statement->execute();
         }

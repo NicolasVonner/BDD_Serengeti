@@ -73,7 +73,7 @@ export const displaySQLResult = (result, parentDiv) => {
             table.id = "consult-ressencement-scroll";
             table.className = "consult-ressencement-scroll-padding";
         }
-        table.innerHTML = '<ul>';
+        table.innerHTML = '<ul class="list-group">';
         result.forEach((rowData, index)=>{
             let row = document.createElement("div");
             row.className = "row-consult";
@@ -81,9 +81,9 @@ export const displaySQLResult = (result, parentDiv) => {
             let rowContent = "";
             Object.keys(rowData).forEach((nom)=>{
                 if (nom.includes("commentaire") && rowData[nom].length > 20)
-                    rowContent = `<li>${createModal(rowData[nom],index)}</li>`;
+                    rowContent = `<li class="list-group-item">${createModal(rowData[nom],index)}</li>`;
                 else
-                    rowContent = `<li><p>${rowData[nom]}</p></li>`;
+                    rowContent = `<li class="list-group-item"><p>${rowData[nom]}</p></li>`;
                 rowHTML += rowContent;
             });
             row.innerHTML = rowHTML.trim();
