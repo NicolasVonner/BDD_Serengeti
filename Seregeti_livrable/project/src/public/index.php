@@ -364,6 +364,6 @@
 </html>
 <?php
   $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
-  $connexionPath = "./pages/connexion.php";
+  $connexionPath = "./pages/";
   echo "<script>setLoginTag($userId,'$connexionPath')</script>";
 ?>

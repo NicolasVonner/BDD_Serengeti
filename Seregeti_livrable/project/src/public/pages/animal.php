@@ -1,13 +1,14 @@
 <?php
-require_once('../php/index/connection.php');
-$r=new Connection();
-$conn = $r->link;
-$req='SELECT distinct "familleA" "especeA" from animal';
-$statement = $conn->prepare($req);
-$statement->execute();
-$test_req=$statement->fetchall();
-
-    
+  require_once('../php/index/connection.php');
+  $r=new Connection();
+  $conn = $r->link;
+  $req='SELECT distinct "familleA" "especeA" from animal';
+  $statement = $conn->prepare($req);
+  $statement->execute();
+  $test_req=$statement->fetchall();
+?>
+<?php
+  session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -32,17 +33,20 @@ $test_req=$statement->fetchall();
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a class="navbar-brand" href="index.php"> <img src="../images/logo-v2/logo_gimp.png" alt="Image"></a>
+          <a class="navbar-brand" href="../index.php"> <img src="../images/logo-v2/logo_gimp.png" alt="Image"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><a href="../index.php">Home</a></li>
-            <li><a href="cares.html">Animal cares</a></li>
-            <li><a href="interventions.html">Group interventions</a></li>
-            <li class="active"><a href="observations.html">Observations</a></li>
+            <li><a href="cares.php">Animal cares</a></li>
+            <li><a href="interventions.php">Group interventions</a></li>
+            <li><a href="observations.php">Observations</a></li>
+            <li><a href="vaccins.php">Vaccins</a></li>
+            <li class="active"><a href="animal.php">Animal</a></li>
+            <li><a href="login.php">Login</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li id="login"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
         </div>
       </div>
@@ -196,58 +200,60 @@ $test_req=$statement->fetchall();
 
           if ($statement)
           {
-              $result = $statement->fetchAll();
-              //var_dump($result);
-              echo '<table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">codeA</th>
-                    <th scope="col">classeA</th>
-                    <th scope="col">familleA</th>
-                    <th scope="col">especeA</th>
-                    <th scope="col">sexeA</th>
-                    <th scope="col">Date d\'arrivée</th>
-                    <th scope="col">vaccin</th>
-                    <th scope="col"></th>
-                  </tr>
-                </thead>
-                <tbody>';
-;
-                foreach ($result as &$valueS) {
-                  echo ' <tr>
-                  <th scope="row">'.$valueS["codeA"].'</th>
-                  <td>'.$valueS["classeA"].'</td>
-                  <td>'.$valueS["familleA"].'</td>
-                  <td>'.$valueS["especeA"].'</td>
-                  <td>'.$valueS["sexeA"].'</td>
-                  <td>'.$valueS["dateArrivee"].'</td>
-                  <td>'.$valueS["vaccin"].'</td>
-                  <td>
-                  <form action="http://localhost:8000/php/requete/animal/animal_delete.php" method="post">
-                  <input  name="codeA" type="hidden" value="'.$valueS["codeA"].'">
-                  <button type="submit" class="btn btn-danger">  Suprimer <span class="glyphicon glyphicon-trash"></span></button>
-                  </form>
-                  </td>
-                </tr>';
-              }
-                
-              echo "</tbody> </table>"; 
+            $result = $statement->fetchAll();
+            //var_dump($result);
+            echo '<table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">codeA</th>
+                  <th scope="col">classeA</th>
+                  <th scope="col">familleA</th>
+                  <th scope="col">especeA</th>
+                  <th scope="col">sexeA</th>
+                  <th scope="col">Date d\'arrivée</th>
+                  <th scope="col">vaccin</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>';;
+              foreach ($result as &$valueS) {
+                echo ' <tr>
+                <th scope="row">'.$valueS["codeA"].'</th>
+                <td>'.$valueS["classeA"].'</td>
+                <td>'.$valueS["familleA"].'</td>
+                <td>'.$valueS["especeA"].'</td>
+                <td>'.$valueS["sexeA"].'</td>
+                <td>'.$valueS["dateArrivee"].'</td>
+                <td>'.$valueS["vaccin"].'</td>
+                <td>
+                <form action="http://localhost:8000/php/requete/animal/animal_delete.php" method="post">
+                <input  name="codeA" type="hidden" value="'.$valueS["codeA"].'">
+                <button type="submit" class="btn btn-danger">  Suprimer <span class="glyphicon glyphicon-trash"></span></button>
+                </form>
+                </td>
+              </tr>';
           }
+          echo "</tbody> </table>";
+        }
       }
-  
     }
-?>
+    ?>
 
     </div>
-    <br />
+    <br/>
+
     <div class="navbar-fixed-bottom">
-    <footer class="container-fluid text-center" style="background-color:#333; color: #9d9d9d;">
+      <footer class="container-fluid text-center" style="background-color:#333; color: #9d9d9d;">
+        <div class="text-center p-3" >
+          © 2021 Copyright: Adrien Lamé, Nicolas Vonner, Mathias Rando
+        </div>
+      </footer>
+    </div>
 
-  <div class="text-center p-3" >
-© 2021 Copyright: Adrien Lamé, Nicolas Vonner, Mathias Rando
-</div>
-</footer>
-</div>
-</body>
-
+  </body>
+  <script src="../js/connexion/is_logged.js"></script>
 </html>
+<?php
+  $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+  echo "<script>setLoginTag($userId)</script>";
+?>
