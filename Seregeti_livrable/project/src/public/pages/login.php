@@ -33,7 +33,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a class="navbar-brand" href="index.php"> <img src="../images/logo-v2/logo_gimp.png" alt="Image"></a>
+          <a class="navbar-brand" href="../index.php"> <img src="../images/logo-v2/logo_gimp.png" alt="Image"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
@@ -41,6 +41,9 @@
             <li><a href="cares.php">Animal cares</a></li>
             <li><a href="interventions.php">Group interventions</a></li>
             <li><a href="observations.php">Observations</a></li>
+            <li><a href="vaccins.php">Vaccins</a></li>
+            <li><a href="animal.php">Animal</a></li>
+            <li class="active"><a href="login.php">Login</a></li>
           </ul>
         </div>
       </div>
@@ -108,9 +111,7 @@
           $statement = $conn->prepare($req);
           $statement->execute();
           $result = $statement->fetchAll();
-          //var_dump($result);
           foreach ($result as $value) {
-            
               echo '<option value="'.$value["codeE"].'">'.$value["nomEquipe"].'</option>';
           }
         ?>

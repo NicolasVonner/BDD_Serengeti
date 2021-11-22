@@ -1,19 +1,17 @@
-<?php
-    
+<?php    
     require_once('../../index/connection.php');
     $r = new Connection();
     if ($r->link) {
-        if(isset($_GET["dateArrivee"]))
+        if(isset($_POST["dateArrivee"]))
         {
             $familleA = strip_tags(htmlspecialchars($_POST["typeRessencementConsult"]));
             $dateArrivee=strip_tags(htmlspecialchars($_POST['dateArrivee']));
             $dateArrivee = date("Y-m-d\TH:i:s", strtotime($dateArrivee));;
-            $vacin=strip_tags(htmlspecialchars($_POST["typeRessencementConsult"]));
-            $req = strip_tags(htmlspecialchars($_GET["typeRessencementConsult"]));
-            $req = 'SELECT * FROM animal WHERE animal."familleA"=? AND dateArrivee>? AND vaccin=?';
+     
+            $req = 'SELECT * FROM animal WHERE animal."familleA"=? AND dateArrivee>=? ';
             $statement = $r->link->prepare($req);
-            $statement->bindParam(1,$_GET["dateIntervention1"]);
-            $statement->bindParam(2,$_GET["dateIntervention2"]);
+            $statement->bindParam(1,$familleA);
+            $statement->bindParam(2,$dateArrivee);
             $statement->execute();
         }
         else

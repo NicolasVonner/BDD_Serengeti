@@ -24,7 +24,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>                        
           </button>
-          <a class="navbar-brand" href="index.php"> <img src="../images/logo-v2/logo_gimp.png" alt="Image"></a>
+          <a class="navbar-brand" href="../index.php"> <img src="../images/logo-v2/logo_gimp.png" alt="Image"></a>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
@@ -32,6 +32,7 @@
             <li class="active"><a href="cares.php">Animal cares</a></li>
             <li><a href="interventions.php">Group interventions</a></li>
             <li><a href="observations.php">Observations</a></li>
+            <li><a href="vaccins.php">Vaccins</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
