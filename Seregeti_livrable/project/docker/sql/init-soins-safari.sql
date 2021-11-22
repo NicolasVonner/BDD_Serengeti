@@ -13,3 +13,5 @@ INSERT INTO "soin" ("dateS", "refS", "codeA", "typeS", "commentaireS", "nomZone"
 INSERT INTO "soin" ("dateS", "refS", "codeA", "typeS", "commentaireS", "nomZone") VALUES ('2021-11-12 09:30:00', 8, 15, 'Soin_recurent', '', 'C');
 
 INSERT INTO "soin" ("dateS", "refS", "codeA", "typeS", "commentaireS", "nomZone") VALUES ('2021-10-07 20:30:00', 7, 28, 'Soin_recurent', 'oh le dogo 🐶', 'A');
+select * from afficher_soins(True);
+select * from afficher_soins(False, 28,7,'A','Soin_recurent');

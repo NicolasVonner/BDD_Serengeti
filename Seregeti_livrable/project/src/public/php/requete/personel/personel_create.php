@@ -54,6 +54,6 @@
 
 
     echo '<script language="Javascript">
-    document.location.replace("http://localhost:8000/pages/login.php");
+    document.location.replace("http://localhost:8000/pages/login.php?msg="insertion réussie");
     </script>';  
 ?>

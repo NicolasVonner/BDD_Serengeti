@@ -7,17 +7,26 @@
     if ($r->link) {
         if(isset($_GET["typeZoneConsult"]))
         {
-            $req = 'SELECT DISTINCT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS" WHERE soin."codeA"=? AND soin."refS"=? AND soin."typeS"=? AND soin."nomZone"=? and soignant."refS"=personnel."codeP"';
+            /*$req = 'SELECT DISTINCT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS" WHERE soin."codeA"=? AND soin."refS"=? AND soin."typeS"=? AND soin."nomZone"=? and soignant."refS"=personnel."codeP"';
             $statement = $r->link->prepare($req);
             $statement->bindParam(1,$_GET["referralAnimal"]);
             $statement->bindParam(2,$_GET["referralCaregiver"]);
             $statement->bindParam(3,$_GET["typeCareConsult"]);
             $statement->bindParam(4,$_GET["typeZoneConsult"]);
-            $statement->execute();
+            $statement->execute(); */
+
+            $req='select * from afficher_soins(False, ?,?,?,?)';
+            $statement = $r->link->prepare($req);
+            $statement->bindParam(1,$_GET["referralAnimal"]);
+            $statement->bindParam(2,$_GET["referralCaregiver"]);
+            $statement->bindParam(3,$_GET["typeZoneConsult"]);
+            $statement->bindParam(4,$_GET["typeCareConsult"]);
+            $statement->execute(); 
         }
         else
         {
-            $req = 'SELECT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS", personnel WHERE soignant."refS"=personnel."codeP"';
+            //$req = 'SELECT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS", personnel WHERE soignant."refS"=personnel."codeP"';
+            $req='select * from afficher_soins(True)';
             $statement = $r->link->prepare($req);
             $statement->execute();
         }

@@ -1,27 +1,27 @@
 html, body{
     font-family:"Verdana",sans-serif;
-  }
-  
-  h1,h2,h3,h4,h5,h6 {
+}
+
+h1,h2,h3,h4,h5,h6 {
     font-family:"Segoe UI",sans-serif
-  }
-  
-  /* Remove the navbar's default margin-bottom and rounded borders */ 
-  .navbar {
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
     margin-bottom: 0;
     border-radius: 0;
-  }
-  
-  .navbar-brand{
-    padding-top: 0;
-  }
+}
 
-  .column-consult ul{
+.navbar-brand{
+    padding-top: 0;
+} 
+
+.column-consult ul{
     display: inline-flex;
-  }
-  
-  .column-consult ul li {
-    background-color: #80534d;
+}
+
+.column-consult ul li {
+    background-color: #F96A3E;
     border-color: #212121;
     color:#F8F8FF;
     border-style: solid;
@@ -30,13 +30,13 @@ html, body{
     vertical-align:middle;
     height: 50px;
     width: 150px;
-  }
+}
 
-  .row-consult ul{
+.row-consult ul{
     display: inline-flex;
-  }
-  
-  .row-consult ul li {
+}
+
+.row-consult ul li {
     background-color: lightgray;
     border-color: grey;
     border-style: solid;
@@ -44,25 +44,25 @@ html, body{
     vertical-align: middle;
     height: 50px;
     width: 150px;
-  }
+}
 
-  .button-comment {
+.button-comment {
     height: 45px;
     width: 145px;
     background-color: lightgray;
-  }
-  
-  .consult-care-scroll-y{
+}
+
+.consult-care-scroll-y{
     min-height: 200px;
     max-height: 500px;
     overflow-y: scroll;
-  }
+}
 
-  .consult-care-scroll-x{
+.consult-care-scroll-x{
     min-width: 300px;
     max-width: 1200px;
     overflow-x: scroll;
-  }
+}
 
 .consult-care-scroll-padding {
     padding-left: 14px;
@@ -77,9 +77,9 @@ html, body{
 }
   
   
-  /* Add a gray background color and some padding to the footer
-  <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>*/
-  footer {
-    background-color:#333;
-    color: #9d9d9d;
-  }
+/* Add a gray background color and some padding to the footer
+<h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>*/
+footer {
+  background-color:#333;
+  color: #9d9d9d;
+}

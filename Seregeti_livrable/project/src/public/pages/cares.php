@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,12 +29,12 @@
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
             <li><a href="../index.php">Home</a></li>
-            <li class="active"><a href="cares.html">Animal cares</a></li>
-            <li><a href="interventions.html">Group interventions</a></li>
-            <li><a href="observations.html">Observations</a></li>
+            <li class="active"><a href="cares.php">Animal cares</a></li>
+            <li><a href="interventions.php">Group interventions</a></li>
+            <li><a href="observations.php">Observations</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
           </ul>
         </div>
       </div>
@@ -161,11 +165,21 @@
 
     </div>
 
-    <footer class="page-footer">
-      <p>Footer Text</p>
-    </footer>
+    <div class="navbar-fixed-bottom">
+      <footer class="container-fluid text-center">
+        <div class="text-center p-3" >
+          © 2021 Copyright: Adrien Lamé, Nicolas Vonner, Mathias Rando
+        </div>
+      </footer>
+    </div>
     
   </body>
   <script type="module" src="../js/soins/soins_report.js"></script>
   <script type="module" src="../js/soins/soins_consult.js"></script>
+  <script src="../js/connexion/is_logged.js"></script>
 </html>
+
+<?php
+  $userId = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+  echo "<script>setLoginTag($userId)</script>";
+?>

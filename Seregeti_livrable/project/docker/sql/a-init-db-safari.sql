@@ -102,26 +102,26 @@ CREATE TABLE "utilisateur" (
   "mdp" varchar(255) 
 );
 
-ALTER TABLE "soin" ADD FOREIGN KEY ("refS") REFERENCES "soignant" ("refS");
+ALTER TABLE "soin" ADD FOREIGN KEY ("refS") REFERENCES "soignant" ("refS") ON DELETE CASCADE;
 
 ALTER TABLE "soin" ADD FOREIGN KEY ("nomZone") REFERENCES "zone" ("nomZone");
 
 
-ALTER TABLE "soin" ADD FOREIGN KEY ("codeA") REFERENCES "animal" ("codeA");
+ALTER TABLE "soin" ADD FOREIGN KEY ("codeA") REFERENCES "animal" ("codeA") ON DELETE CASCADE;
 
 ALTER TABLE "intervention" ADD FOREIGN KEY ("codeEquipe") REFERENCES "equipe" ("codeE");
 
 ALTER TABLE "intervention" ADD FOREIGN KEY ("nomZone") REFERENCES "zone" ("nomZone");
 
-ALTER TABLE "soignant" ADD FOREIGN KEY ("refS") REFERENCES "personnel" ("codeP");
+ALTER TABLE "soignant" ADD FOREIGN KEY ("refS") REFERENCES "personnel" ("codeP") ON DELETE CASCADE;
 
-ALTER TABLE "garde" ADD FOREIGN KEY ("codeP") REFERENCES "personnel" ("codeP");
+ALTER TABLE "garde" ADD FOREIGN KEY ("codeP") REFERENCES "personnel" ("codeP") ON DELETE CASCADE;
 
-ALTER TABLE "utilisateur" ADD FOREIGN KEY ("identifiant") REFERENCES "personnel" ("codeP");
+ALTER TABLE "utilisateur" ADD FOREIGN KEY ("identifiant") REFERENCES "personnel" ("codeP") ON DELETE CASCADE;
 
 ALTER TABLE "garde" ADD FOREIGN KEY ("codeE") REFERENCES "equipe" ("codeE");
 
-ALTER TABLE "ressencement_A" ADD FOREIGN KEY ("animal") REFERENCES "animal" ("codeA");
+ALTER TABLE "ressencement_A" ADD FOREIGN KEY ("animal") REFERENCES "animal" ("codeA") ON DELETE CASCADE;
 
 ALTER TABLE "ressencement_A" ADD FOREIGN KEY ("zone") REFERENCES "zone" ("nomZone");
 
@@ -129,4 +129,50 @@ ALTER TABLE "ressencement_V" ADD FOREIGN KEY ("vegetal") REFERENCES "vegetal" ("
 
 ALTER TABLE "ressencement_V" ADD FOREIGN KEY ("zone") REFERENCES "zone" ("nomZone");
 
-ALTER TABLE "zone" ADD FOREIGN KEY ("responsable") REFERENCES "personnel" ("codeP");
+ALTER TABLE "zone" ADD FOREIGN KEY ("responsable") REFERENCES "personnel" ("codeP") ON DELETE CASCADE;
+
+
+
+CREATE OR REPLACE FUNCTION home_stats() RETURNS RECORD AS $$
+DECLARE 
+  count_a integer;
+  count_p integer;
+  count_s integer;
+  count_v integer;
+  ret RECORD;
+BEGIN
+  SELECT COUNT(*) FROM animal into count_a;
+  SELECT COUNT(*) FROM personnel into count_p;
+ SELECT COUNT(*) FROM soin WHERE "typeS"='Blessure_braconier' into count_s;
+ SELECT COUNT(*) FROM vegetal into count_v;
+ SELECT count_a, count_p, count_s, count_v into ret;
+RETURN ret;
+END;$$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE FUNCTION afficher_soins(test boolean, codea int DEFAULT 0, refs int DEFAULT 0, nomzone Text DEFAULT '{}', types Text DEFAULT '{}' ) 
+ RETURNS TABLE (
+  "dateS" timestamp, 
+  "codeA" int, 
+  "typeS" typesoin, 
+  "commentaireS" varchar, 
+  "nomZone" varchar, 
+  "especeA" varchar, 
+  "specialite" varchar, 
+  "nom" varchar 
+  )
+ AS $$
+ DECLARE 
+  req varchar;
+BEGIN
+    if (test) THEN 
+    RETURN QUERY SELECT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" 
+    FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS", personnel 
+    WHERE soignant."refS"=personnel."codeP";
+    ELSE 
+      req:='SELECT soin."dateS", soin."codeA", soin."typeS", soin."commentaireS", soin."nomZone", animal."especeA", soignant."specialite", personnel."nom" FROM animal inner join soin on animal."codeA"=soin."codeA" inner join soignant on soin."refS"=soignant."refS", personnel WHERE soin."codeA"='||codea||' AND soin."refS"='||refs|| ' AND soin."typeS"='||quote_literal(types)||'  AND soin."nomZone"='||quote_literal(nomzone)||' and soignant."refS"=personnel."codeP"';
+    
+     RETURN QUERY EXECUTE req;
+     END IF;
+END;$$ 
+LANGUAGE plpgsql;

@@ -67,11 +67,19 @@ html, body{
 .consult-care-scroll-padding {
     padding-left: 14px;
 }
+
+.div-login {
+  margin-top: 0.5em;
+}
+
+.icon-size {
+  font-size:25px;
+}
   
   
   /* Add a gray background color and some padding to the footer
   <h5><span class="glyphicon glyphicon-time"></span> Post by Jane Dane, Sep 27, 2015.</h5>*/
   footer {
-    background-color: #f2f2f2;
-    padding: 25px;
+    background-color:#333;
+    color: #9d9d9d;
   }

@@ -35,7 +35,6 @@ else{
     $statement->execute();
     $test_req=$statement->fetchAll();
     $statement->execute();
-    
     if (count($test_req)>0){ //si la requête n'est pas vide
         $resultat=$statement->fetchAll(); //covertie l'objet en tableau
         $_SESSION['user_id']=$resultat[0]["identifiant"];
@@ -49,8 +48,6 @@ else{
         $time = new DateTime;
         $time->modify('+2 seconds');
         $_SESSION['jeton_valid'] = $time;
-
-       
         
         echo '<script language="Javascript">
         document.location.replace("http://localhost:8000/pages/login.php");
