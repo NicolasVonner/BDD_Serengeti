@@ -1,5 +1,27 @@
 <?php
-  session_start();
+require_once('../php/index/connection.php');
+$r=new Connection();
+$conn = $r->link;
+$reqESA='SELECT DISTINCT "codeA" from soin';
+$reqESS='SELECT DISTINCT "refS" from soin';
+$reqESALL='SELECT DISTINCT "codeA" from animal';
+
+$statementESA = $conn->prepare($reqESA);
+$statementESA->execute();
+
+$statementESS = $conn->prepare($reqESS);
+$statementESS->execute();
+
+$statementESALL = $conn->prepare($reqESALL);
+$statementESALL->execute();
+
+$resultESA=$statementESA->fetchall();
+
+$resultESS=$statementESS->fetchall();
+
+$resultESALL=$statementESALL->fetchall();
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -56,12 +78,28 @@
 
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Caregiver referral</label>
-                <input type="referralS" class="form-control" id="referralCaregiver" name="referralCaregiver" placeholder="Caregiver referral">
+                <select class="form-control" name="referralCaregiver" id="referralCaregiver">
+                      <?php
+                      
+                      foreach ($resultESS as $value) {
+                        
+                          echo '<option value="'.$value["refS"].'">'.$value["refS"].'</option>';
+                      }
+                      ?>
+                 </select>
               </div>
 
               <div class="form-group col-md-5">
                 <label for="inputPassword4">Animal referral</label>
-                <input type="referralA" class="form-control" id="referralAnimal" name="referralAnimal" placeholder="Animal referral">
+                    <select class="form-control" name="referralAnimal" id="referralAnimal">
+                      <?php
+                      
+                      foreach ($resultESALL as $value) {
+                        
+                          echo '<option value="'.$value["codeA"].'">'.$value["codeA"].'</option>';
+                      }
+                      ?>
+                    </select>
               </div>
   
             </div>
@@ -128,12 +166,28 @@
             <div class="row">
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Caregiver referral</label>
-                <input type="referralS" class="form-control" id="referralCaregiver" name="referralCaregiver" placeholder="Caregiver referral">
+                <select class="form-control" name="referralCaregiver" id="referralCaregiver">
+                      <?php
+                      
+                      foreach ($resultESS as $value) {
+                        
+                          echo '<option value="'.$value["refS"].'">'.$value["refS"].'</option>';
+                      }
+                      ?>
+                 </select>
               </div>
 
               <div class="form-group col-md-5">
                 <label for="inputPassword4">Animal referral</label>
-                <input type="referralA" class="form-control" id="referralAnimal" name="referralAnimal" placeholder="Animal referral">
+                <select class="form-control" name="referralAnimal" id="referralAnimal">
+                      <?php
+                      
+                      foreach ($resultESA as $value) {
+                        
+                          echo '<option value="'.$value["codeA"].'">'.$value["codeA"].'</option>';
+                      }
+                      ?>
+                    </select>
               </div>
             </div>
 

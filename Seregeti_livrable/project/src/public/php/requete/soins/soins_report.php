@@ -11,6 +11,7 @@
                 $date = date("Y-m-d\TH:i:s", strtotime($_POST["dateCaregiver"]));
 
                 $req= 'INSERT INTO soin ("dateS","refS","codeA","typeS","nomZone","commentaireS") VALUES(?,?,?,?,?,?)';
+                
                 $statement = $r->link->prepare($req);
                 $statement->bindParam(1,$date);
                 $statement->bindParam(2,$_POST["referralCaregiver"]);
@@ -26,7 +27,7 @@
                 }
                 else
                 {
-                    echo "Erreur lors de l'envoie à la BDD";
+                    echo $statement;
                 }
             }
     }

@@ -1,5 +1,17 @@
 <?php
-  session_start();
+require_once('../php/index/connection.php');
+$r=new Connection();
+$conn = $r->link;
+
+$reqESALL='SELECT DISTINCT "codeA" from animal';
+
+
+$statementESALL = $conn->prepare($reqESALL);
+$statementESALL->execute();
+
+$resultESALL=$statementESALL->fetchall();
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +68,15 @@
 
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Animal referral</label>
-                <input type="referralS" class="form-control" id="referralAnimal" name="referralAnimal" placeholder="Animal referral">
+                <select class="form-control" name="referralAnimal" id="referralAnimal" placeholder="Animal referral">
+                      <?php
+                      
+                      foreach ($resultESALL as $value) {
+                        
+                          echo '<option value="'.$value["codeA"].'">'.$value["codeA"].'</option>';
+                      }
+                      ?>
+                    </select>
               </div>
 
               <div class="form-group col-md-5">

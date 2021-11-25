@@ -1,6 +1,22 @@
 <?php
-  require_once('../php/index/connection.php');
-  session_start();
+require_once('../php/index/connection.php');
+$r=new Connection();
+$conn = $r->link;
+
+$reqESALL='SELECT "codeA" from animal';
+
+$reqESVLL='SELECT "codeV" from vegetal';
+
+$statementESALL = $conn->prepare($reqESALL);
+$statementESALL->execute();
+
+$statementESVLL = $conn->prepare($reqESVLL);
+$statementESVLL->execute();
+
+$resultESALL=$statementESALL->fetchall();
+$resultESVLL=$statementESVLL->fetchall();
+
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,7 +29,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
-
+  <script>
+    /*  function getval(typeRessencementReport)
+      {
+        //Faire en sorte qu'un seul s'affiche
+        if(typeRessencementReport.value == 'Animal'){
+          console.log("AAAAAAAAAAAAAAAAA")
+        document.getElementById("referralV").style.display = "none"; 
+        document.getElementById("referral").style.display = "inline"; 
+        }
+        else if (typeRessencementReport.value == 'Végétal'){
+         document.getElementById("referral").style.display = "none"; 
+        document.getElementById("referralV").style.display = "inline"; 
+        }       
+      }*/
+    
+    </script>
   <body>
     
     <title>Page Title</title>
@@ -56,7 +87,7 @@
             <div class="row">
               <div class="form-group col-md-5">
                 <label for="inputType">Type d'individue</label>
-                <select id="typeRessencementReport" name="typeRessencementReport" class="form-control">
+                <select id="typeRessencementReport" name="typeRessencementReport" class="form-control" onchange="getval(this);">
                   <option selected>Animal</option>
                   <option>Végétal</option>
                 </select>
@@ -64,10 +95,26 @@
             </div>
 
             <div class="row">
-
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Referral</label>
-                <input class="form-control" id="referral" name="referral">
+                <select class="form-control" name="referral" id="referral">
+                      <?php
+                      
+                      foreach ($resultESALL as $value) {
+                        
+                          echo '<option value="'.$value["codeA"].'">'.$value["codeA"].'</option>';
+                      }
+                      ?>
+                  </select>
+                  <!-- <select class="form-control" name="referral" id="referralV">
+                    <?php
+                      
+                      /*foreach ($resultESVLL as $value) {
+                        
+                          echo '<option value="'.$value["codeV"].'">'.$value["codeV"].'</option>';
+                      }*/
+                      ?> 
+                  </select> -->
               </div>
 
               <div class="form-group col-md-5">
@@ -82,12 +129,6 @@
             </div>
 
             <div class="row">
-
-              <div class="form-group col-md-5">
-                <label for="inputEmail4">Number</label>
-                <input class="form-control" type="number" id="number" name="number" placeholder="1">
-              </div>
-  
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Date Report</label>
                 <input id="dateRessencement" name="dateRessencement" type="datetime-local" value="">

@@ -1,5 +1,15 @@
 <?php
   require_once('../php/index/connection.php');
+  $r=new Connection();
+  $conn = $r->link;
+  $reqESSE='SELECT DISTINCT "codeE" from equipe';
+
+  $statementESSE = $conn->prepare($reqESSE);
+  $statementESSE->execute();
+
+  
+  $resultESSE=$statementESSE->fetchall();
+  
   session_start();
 ?>
 <!DOCTYPE html>
@@ -65,7 +75,15 @@
 
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Groupe code</label>
-                <input type="referralS" class="form-control" id="codeGroup" name="codeGroup" placeholder="Code Group">
+                <select class="form-control" name="codeGroup" id="codeGroup" placeholder="Code Group">
+                      <?php
+                      
+                      foreach ($resultESSE as $value) {
+                        
+                          echo '<option value="'.$value["codeE"].'">'.$value["codeE"].'</option>';
+                      }
+                      ?>
+                 </select>
               </div>
   
               <div class="form-group col-md-5">

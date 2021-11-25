@@ -89,19 +89,19 @@ session_start();
               
             </div>
             <div class="row">
-            <div class="form-group col-md-5">
-                <label for="especeA">espece Animal</label>
-                <select class="form-control" name="especeA" id="especeA">
-                  <?php
-                  
-                  foreach ($resultESA as $value) {
-                    
-                      echo '<option value="'.$value["especeA"].'">'.$value["especeA"].'</option>';
-                  }
-                ?>
-        </select>
-              </div>
-              </div>
+                <div class="form-group col-md-5">
+                    <label for="especeA">espece Animal</label>
+                    <select class="form-control" name="especeA" id="especeA">
+                      <?php
+                      
+                      foreach ($resultESA as $value) {
+                        
+                          echo '<option value="'.$value["especeA"].'">'.$value["especeA"].'</option>';
+                      }
+                    ?>
+                    </select>
+                  </div>
+            </div>
             
               <div class="row">
               <div class="form-group col-md-5">
@@ -243,7 +243,7 @@ session_start();
                   <th scope="col"></th>
                 </tr>
               </thead>
-              <tbody>';;
+              <tbody>';
               foreach ($result as &$valueS) {
                 echo ' <tr>
                 <th scope="row">'.$valueS["codeA"].'</th>

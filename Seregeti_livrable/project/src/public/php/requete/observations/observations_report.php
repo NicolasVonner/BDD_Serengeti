@@ -11,14 +11,13 @@
                 $date = date("Y-m-d\TH:i:s", strtotime($_POST["dateRessencement"]));
 
                 $req = ($_POST["typeRessencementReport"] == "Animal") ? 
-                'INSERT INTO "ressencement_A" ("animal", "zone", "nombre", "date") VALUES (?, ?, ?, ?)'
-                : 'INSERT INTO "ressencement_V" ("vegetal", "zone", "nombre", "date") VALUES (?, ?, ?, ?)';
+                'INSERT INTO "ressencement_A" ("animal", "zone", "date") VALUES (?, ?, ?)'
+                : 'INSERT INTO "ressencement_V" ("vegetal", "zone", "date") VALUES (?, ?, ?)';
 
                 $statement = $r->link->prepare($req);
                 $statement->bindParam(1,$_POST["referral"]);
                 $statement->bindParam(2,$_POST["zoneTypeReport"]);
-                $statement->bindParam(3,$_POST["number"]);
-                $statement->bindParam(4,$date);
+                $statement->bindParam(3,$date);
                 $statement->execute();
 
                 if ($statement)
