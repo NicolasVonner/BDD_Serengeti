@@ -12,13 +12,12 @@ let setLoginTag = (userId, path = "") => {
 
 let setLoggedLiNav = (userId, path) => {
     let navUl = document.getElementById("myNavbar").getElementsByTagName("ul")[0];
-    console.log(navUl)
     let listOngletNav = [
         {href:`${path}animal.php`, label:"Animal"},
         {href:`${path}login.php`, label:"Login"}
     ];
-    let listLiName = [...navUl.getElementsByTagName("li")].map((element)=>element.outerText);
-    console.log(listLiName);
+
+    let listLiName = [...navUl.getElementsByTagName("li")].map((element)=>element.textContent);
     if (!listOngletNav.map((element)=>element.label).every((li)=>listLiName.includes(li)))
     {
         let html = "";

@@ -45,6 +45,9 @@
             <li><a href="animal.php">Animal</a></li>
             <li class="active"><a href="login.php">Login</a></li>
           </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li id="login"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+          </ul>
         </div>
       </div>
     </nav>
