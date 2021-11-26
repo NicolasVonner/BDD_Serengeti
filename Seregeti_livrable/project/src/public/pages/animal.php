@@ -66,7 +66,8 @@ session_start();
     </nav>
 
     <h1>Page Animal</h1>
-    <p>Ici nous renseignons les naissance d'animaux</p>
+
+    <p> Ici nous ajoutons et consultons les animaux </p>
     <div class="container-fluid">
       <div class="col-md-5">
         <!-- ZONE D'AJOUT DE RESSENCEMENT -->
@@ -83,37 +84,33 @@ session_start();
               Sexe * : <INPUT  type="radio" name="sexeA" value="M" checked> M
               <INPUT type="radio" name="sexeA" value="F"> F
               <br />
-              </div>
+            </div>   
               
-              
-              
-            </div>
+        </div>
             <div class="row">
                 <div class="form-group col-md-5">
                     <label for="especeA">espece Animal</label>
                     <select class="form-control" name="especeA" id="especeA">
-                      <?php
-                      
+                      <?php             
                       foreach ($resultESA as $value) {
                         
                           echo '<option value="'.$value["especeA"].'">'.$value["especeA"].'</option>';
                       }
-                    ?>
+                      ?>
                     </select>
                   </div>
             </div>
             
-              <div class="row">
+            <div class="row">
               <div class="form-group col-md-5">
                 <label for="familleA">Famille animale</label>
                 <select class="form-control" name="familleA" id="familleA">
-                  <?php
-                  
-                  foreach ($result as $value) {
-                      echo '<option value="'.$value["familleA"].'">'.$value["familleA"].'</option>';
-                  }
-                ?>
-              </select>
+                    <?php                   
+                    foreach ($result as $value) {
+                        echo '<option value="'.$value["familleA"].'">'.$value["familleA"].'</option>';
+                    }
+                    ?>
+                </select>
               </div>
             </div>
       
@@ -121,36 +118,24 @@ session_start();
             <div class="row">
               <div class="form-group col-md-5">
                 <label for="inputType">classe animale</label>
-                <select id="classeA" name="classeA" class="form-control">
-                
-              <?php
-                  
-                foreach ($resultCLA as $value) {
-                  echo '<option value="'.$value["classeA"].'">'.$value["classeA"].'</option>';
-                }
-                ?>
+                <select id="classeA" name="classeA" class="form-control">               
+                  <?php
+                      
+                    foreach ($resultCLA as $value) {
+                      echo '<option value="'.$value["classeA"].'">'.$value["classeA"].'</option>';
+                    }
+                    ?>
                 </select>
               </div>
             </div>
-
-            <div class="row">
-
-          
-            </div>
-
-            <div class="row">
-
-           
+            <div class="row">        
               <div class="form-group col-md-5">
                 <label for="dateArrivee">Date Arrivée:</label>
                 <input id="dateArrivee" name="dateArrivee" type="datetime-local" value="2021-12-03T23:07" min="1980-01-01T09:00" >
               </div>
-
             </div> 
-          <button type="submit" class="btn btn-primary">Envoyer <span class="glyphicon glyphicon-plus"></span></button>
-          <div id="report-ressencement">
-              </form>
-          </div>
+          </form>
+              <button type="submit" class="btn btn-primary"> Envoyer <span class="glyphicon glyphicon-plus"></span></button>
         </div>   
       </div>
 
@@ -163,40 +148,36 @@ session_start();
         </div>
 
         <div>
-          <form id="consult" method="post" action="#">
-          <div class="row">
-              <div class="form-group col-md-5">
-                <input class="form-check-input" type="checkbox" name="checkAllInfo" id="checkCare">
-                <label class="form-check-label" for="checkCare">Check All Info</label>
+          <form id = "consult" method="post" action="#">
+              <div class="row">
+                <div class="form-group col-md-5">
+                  <input class="form-check-input" type="checkbox" name="checkAllInfo" id="checkAnim">
+                  <label class="form-check-label" for="checkAnim">Check All Info</label>
+                </div>
               </div>
-            </div>
+              <div class="row">
+                <div class="form-group col-md-5">
+                    <label for="inputType"> famille animal</label>
+                    <select id="classeAConsult" name="familleA" class="form-control">
+                    <?php foreach ($result as $value) {
+                        echo '<option value="'.$value["familleA"].'">'.$value["familleA"].'</option>';
+                    } ?>
+                    </select>
+                </div>
 
-              <div class="form-group col-md-5">
-                <label for="inputType"> familleA</label>
-                <select id="classeAConsult" name="familleA" class="form-control">
-                <?php foreach ($result as $value) {
-                    echo '<option value="'.$value["familleA"].'">'.$value["familleA"].'</option>';
-                } ?>
-                </select>
+                <div class="row">
+                  <div class="form-group col-md-5 margin-right">
+                    <label for="inputEmail4"> Date Arrivée >= </label>
+                    <input id="dateArrivee" name="dateArrivee" type="datetime-local"  min="1975-01-01T00:00">
+                  </div>
+                </div>
               </div>
-
-            </div>
-
-            <div class="row">
-              <div class="form-group col-md-5 margin-right">
-                <label for="inputEmail4"> Date Arrivée >= </label>
-                <input id="dateArrivee" name="dateArrivee" type="datetime-local"  min="1975-01-01T00:00">
-              </div>
-            </div>
-
-          
-          <button type="submit" class="btn btn-primary">  Chercher <span class="glyphicon glyphicon-search"></span></button>
+            <button type="submit" class="btn btn-primary" id ="submitlsd">  Chercher <span class="glyphicon glyphicon-search"></span></button>           
+         
           </form>
+          
         </div>
       </div>
-
-    </div>
-    <div id="consult-ressencement" class="container-fluid text-center">
 
     </div>
 
@@ -218,9 +199,7 @@ session_start();
             $statement->bindParam(1,$familleA);
             $statement->bindParam(2,$dateArrivee);
             $statement->execute();
-        }
-          else
-          {
+        }else{
               $req="SELECT * FROM animal";
               $statement = $r->link->prepare($req);
               $statement->execute();
@@ -280,6 +259,7 @@ session_start();
 
   </body>
   <script src="../js/connexion/is_logged.js"></script>
+  <script type="module" src="../js/animal/animal_consult.js"></script>
 
 </html>
 <?php

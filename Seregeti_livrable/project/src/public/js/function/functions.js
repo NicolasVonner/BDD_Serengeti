@@ -1,7 +1,13 @@
 
 export const disableAllField = (formElement, isDesabled) => {
+    var i = 0;
+    var limit = formElement.length
     formElement.forEach((field)=>{
-        field.disabled = isDesabled;
+        i ++;
+        if( i != limit){
+            field.disabled = isDesabled;
+            console.log(formElement.length);
+        }      
     });
 }
 
