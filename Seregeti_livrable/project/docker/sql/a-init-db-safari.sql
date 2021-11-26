@@ -212,3 +212,19 @@ ON animal
 FOR EACH ROW
 EXECUTE PROCEDURE verifyClasseA();
 
+CREATE OR REPLACE FUNCTION verifyClasseSoigniantGarde()
+RETURNS trigger
+As $$
+DECLARE
+famillea varchar;
+BEGIN
+  SELECT personnel."codeP" FROM personnel, garde  WHERE personnel."codeP"=garde."codeP" AND personnel."codeP"=new."codeP";
+ if not found then
+ ELSE
+  RAISE EXCEPTION 'ce soigniant est un garde';
+  END IF;
+     RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
