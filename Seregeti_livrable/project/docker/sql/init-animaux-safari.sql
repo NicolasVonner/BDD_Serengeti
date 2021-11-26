@@ -21,7 +21,7 @@ INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Ma
 
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Giraffidés', 'Girafe','F', '0');
 
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Rhinocerotoidea', 'Impala','M', '0');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Bovidés', 'Impala','M', '0');
 
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3');
 

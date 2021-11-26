@@ -179,3 +179,36 @@ LANGUAGE plpgsql;
 
 
 
+
+
+CREATE TABLE "associationA"(
+ "classeA" varchar, 
+ "familleA" varchar,
+ "especeA" varchar PRIMARY KEY  NOT NULL
+);
+
+
+
+CREATE OR REPLACE FUNCTION verifyClasseA()
+RETURNS trigger
+As $$
+DECLARE
+classea varchar;
+famillea varchar;
+BEGIN
+  SELECT "classeA" FROM "associationA" WHERE "associationA"."especeA" = new."especeA" into classea;
+  SELECT "familleA" FROM "associationA" WHERE "associationA"."especeA" = new."especeA" into famillea;
+  IF (new."classeA" = classea) AND (new."familleA" = famillea ) THEN
+  ELSE 
+    RAISE EXCEPTION 'Animal classe incohérente';
+  END IF;
+     RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER verifyClasseA
+BEFORE INSERT OR UPDATE
+ON animal
+FOR EACH ROW
+EXECUTE PROCEDURE verifyClasseA();
+
