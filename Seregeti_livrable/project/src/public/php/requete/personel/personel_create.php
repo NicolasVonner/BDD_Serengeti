@@ -11,7 +11,6 @@
     $prenom=strip_tags(htmlspecialchars($_POST['prenom']));
     $age=strip_tags(htmlspecialchars($_POST['age']));
     $sexe=strip_tags(htmlspecialchars($_POST['sexeP']));
-   
     $typeP=strip_tags(htmlspecialchars($_POST['typeP']));
     $dateArrivee=strip_tags(htmlspecialchars($_POST['dateArrivee']));
     $typeC=strip_tags(htmlspecialchars($_POST['typeC'])); 
@@ -54,6 +53,6 @@
 
 
     echo '<script language="Javascript">
-    document.location.replace("http://localhost:8000/pages/login.php?msg=1);
+    document.location.replace("http://localhost:8000/pages/login.php);
     </script>';  
 ?>

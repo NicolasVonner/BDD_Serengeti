@@ -131,8 +131,6 @@ ALTER TABLE "ressencement_V" ADD FOREIGN KEY ("zone") REFERENCES "zone" ("nomZon
 
 ALTER TABLE "zone" ADD FOREIGN KEY ("responsable") REFERENCES "personnel" ("codeP") ON DELETE CASCADE;
 
-
-
 CREATE OR REPLACE FUNCTION home_stats() RETURNS RECORD AS $$
 DECLARE 
   count_a integer;

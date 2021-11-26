@@ -230,10 +230,11 @@
       echo "</tbody> </table>";
     ?>
 
-<div class="container text-center">    
+<!--<div class="container text-center">    
       <h3>vous pouvez également consulter : </h3><br>
       <a href="./animal.php" class="btn btn-primary">Animaux</a>
-    </div><br>
+ </div>
+ <br>-->
 
     <div class="navbar-fixed-bottom"> 
       <footer class="container-fluid text-center">
