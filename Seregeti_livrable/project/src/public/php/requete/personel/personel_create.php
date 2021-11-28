@@ -4,9 +4,7 @@
     
     $r=new Connection();
     $conn = $r->link;
-   
-    
-    
+           
 	$nom=strip_tags(htmlspecialchars($_POST['nom']));
     $prenom=strip_tags(htmlspecialchars($_POST['prenom']));
     $age=strip_tags(htmlspecialchars($_POST['age']));
@@ -16,7 +14,6 @@
     $typeC=strip_tags(htmlspecialchars($_POST['typeC'])); 
     $dateArrivee = date("Y-m-d\TH:i:s", strtotime($dateArrivee));
     $salaire=strip_tags(htmlspecialchars($_POST['salaire']));
-
 
     $req='INSERT INTO personnel("nom", "prenom", "age", "sexeP","typeContrat","salaire","dateArrivee") values(?,?,?,?,?,?,?)';  
     $statement = $conn->prepare($req);
@@ -38,6 +35,7 @@
         $statement->bindParam(2,$specialiteS,PDO::PARAM_STR);
         
         $statement->execute();
+   
     }
     elseif($typeP=="garde"){
         $equipe=strip_tags(htmlspecialchars($_POST['equipe']));
@@ -46,13 +44,12 @@
         $statement->bindParam(1,$id, PDO::PARAM_INT);
         $statement->bindParam(2,$equipe);
         $t=$statement->execute();
-        
+     
     }
-    
-
-
 
     echo '<script language="Javascript">
-    document.location.replace("http://localhost:8000/pages/login.php);
+    document.location.replace("http://localhost:8000/pages/login.php");
     </script>';  
+    
+  
 ?>

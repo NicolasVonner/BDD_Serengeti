@@ -1,3 +1,19 @@
+DROP TABLE IF EXISTS "animal";
+DROP TABLE IF EXISTS "vegetal";
+DROP TABLE IF EXISTS "personnel";
+DROP TABLE IF EXISTS "soin";
+DROP TABLE IF EXISTS"zone";
+DROP TABLE IF EXISTS "intervention"; 
+DROP TABLE IF EXISTS "soignant";
+DROP TABLE IF EXISTS "garde";
+DROP TABLE IF EXISTS "equipe" ;
+DROP TABLE IF EXISTS "ressencement_A";
+DROP TABLE IF EXISTS "ressencement_V";
+DROP TABLE IF EXISTS "utilisateur";
+
+DROP TYPE IF EXISTS "typesoin";
+DROP TYPE IF EXISTS "typec";
+
 CREATE TYPE "typesoin" AS ENUM (
   'Blessure_naturelle',
   'Blessure_braconier',
@@ -178,14 +194,18 @@ LANGUAGE plpgsql;
 
 
 
-
+DROP TABLE IF EXISTS "associationA";
 CREATE TABLE "associationA"(
- "classeA" varchar, 
- "familleA" varchar,
- "especeA" varchar PRIMARY KEY  NOT NULL
+ "classeA" varchar(255), 
+ "familleA" varchar(255),
+ "especeA" varchar(255) PRIMARY KEY  NOT NULL
 );
 
-
+DROP TRIGGER IF EXISTS verifyClasseA on animal;
+DROP TRIGGER IF EXISTS verifyClasseSoignantGarde on soignant;
+DROP TRIGGER IF EXISTS verifyClasseSoigniantReponsable on soignant;
+DROP TRIGGER IF EXISTS verifyClasseGardeSoigniant on garde;
+DROP TRIGGER IF EXISTS verifyClasseGardeReponsable on garde;
 
 CREATE OR REPLACE FUNCTION verifyClasseA()
 RETURNS trigger
@@ -210,19 +230,83 @@ ON animal
 FOR EACH ROW
 EXECUTE PROCEDURE verifyClasseA();
 
-CREATE OR REPLACE FUNCTION verifyClasseSoigniantGarde()
+CREATE OR REPLACE FUNCTION verifyClasseSoignantGarde()
 RETURNS trigger
 As $$
-DECLARE
-famillea varchar;
 BEGIN
-  SELECT personnel."codeP" FROM personnel, garde  WHERE personnel."codeP"=garde."codeP" AND personnel."codeP"=new."codeP";
+  PERFORM personnel."codeP" FROM personnel, garde  WHERE personnel."codeP"=garde."codeP" AND personnel."codeP"=new."refS";
  if not found then
  ELSE
-  RAISE EXCEPTION 'ce soigniant est un garde';
+  RAISE EXCEPTION 'le Soignant est un garde';
   END IF;
      RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
 
+
+CREATE TRIGGER verifyClasseSoignantGarde
+BEFORE INSERT OR UPDATE
+ON soignant
+FOR EACH ROW
+EXECUTE PROCEDURE verifyClasseSoignantGarde();
+
+CREATE OR REPLACE FUNCTION verifyClasseSoigniantReponsable()
+RETURNS trigger
+As $$
+BEGIN
+  PERFORM personnel."codeP" FROM personnel, zone  WHERE personnel."codeP"=zone."responsable" AND personnel."codeP"=new."refS";
+ if not found then
+  ELSE 
+  RAISE EXCEPTION 'ce soigniant est déja dans la table reponsable';
+  END IF;
+     RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER verifyClasseSoignantReponsable
+BEFORE INSERT OR UPDATE
+ON soignant
+FOR EACH ROW
+EXECUTE PROCEDURE verifyClasseSoigniantReponsable();
+
+
+CREATE OR REPLACE FUNCTION verifyClasseGardeReponsable()
+RETURNS trigger
+As $$
+BEGIN
+  PERFORM personnel."codeP" FROM personnel, zone  WHERE personnel."codeP"=zone."responsable" AND personnel."codeP"=new."codeP";
+ if not found then
+  ELSE 
+  RAISE EXCEPTION 'ce garde est déja dans la table reponsable';
+  END IF;
+     RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER verifyClasseGardeReponsable
+BEFORE INSERT OR UPDATE
+ON  garde
+FOR EACH ROW
+EXECUTE PROCEDURE verifyClasseGardeReponsable();
+
+CREATE OR REPLACE FUNCTION verifyClasseGardeSoigniant()
+RETURNS trigger
+As $$
+BEGIN
+  PERFORM personnel."codeP" FROM personnel, soignant  WHERE personnel."codeP"=soignant."refS" AND personnel."codeP"=new."codeP";
+ if not found then
+ ELSE
+  RAISE EXCEPTION 'le garde est un soigniant';
+  END IF;
+     RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+
+CREATE TRIGGER verifyClasseGardeSoigniant
+BEFORE INSERT OR UPDATE
+ON garde
+FOR EACH ROW
+EXECUTE PROCEDURE verifyClasseGardeSoigniant();
 

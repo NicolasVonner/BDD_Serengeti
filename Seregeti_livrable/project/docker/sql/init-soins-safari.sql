@@ -15,3 +15,4 @@ INSERT INTO "soin" ("dateS", "refS", "codeA", "typeS", "commentaireS", "nomZone"
 INSERT INTO "soin" ("dateS", "refS", "codeA", "typeS", "commentaireS", "nomZone") VALUES ('2021-10-07 20:30:00', 7, 28, 'Soin_recurent', 'oh le dogo 🐶', 'A');
 select * from afficher_soins(True);
 select * from afficher_soins(False, 28,7,'A','Soin_recurent');
+select * from home_stats() as (count_animales int, count_personnels int, count_soins int, count_vegetaux int);
