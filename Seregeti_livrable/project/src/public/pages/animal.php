@@ -3,9 +3,10 @@
 require_once('../php/index/connection.php');
 $r=new Connection();
 $conn = $r->link;
-$reqCLA='SELECT DISTINCT "classeA" from animal ORDER BY "classeA" DESC';
-$reqESA='SELECT DISTINCT "especeA" from animal ORDER BY "especeA" DESC';
-$req='SELECT DISTINCT "familleA" from animal ORDER BY "familleA" DESC';
+$reqCLA='SELECT DISTINCT "classeA" from "associationA" ORDER BY "classeA"';
+$reqESA='SELECT DISTINCT "especeA" from "associationA" ORDER BY "especeA"';
+$reqFAA='SELECT DISTINCT "familleA" from "associationA"  ORDER BY "familleA"';
+$req='SELECT DISTINCT "familleA" from animal ORDER BY "familleA"';
   
 $statement = $conn->prepare($req);
 $statement->execute();
@@ -16,9 +17,13 @@ $statementCLA->execute();
 $statementESA = $conn->prepare($reqESA);
 $statementESA->execute();
 
+$statementFAA = $conn->prepare($reqFAA);
+$statementFAA->execute();
+
 $result=$statement->fetchall();
 $resultCLA=$statementCLA->fetchall();
 $resultESA=$statementESA->fetchall();
+$resultFAA =$statementFAA->fetchall();
 
 session_start();
 
@@ -106,7 +111,7 @@ session_start();
                 <label for="familleA">Famille animale</label>
                 <select class="form-control" name="familleA" id="familleA">
                     <?php                   
-                    foreach ($result as $value) {
+                    foreach ($resultFAA  as $value) {
                         echo '<option value="'.$value["familleA"].'">'.$value["familleA"].'</option>';
                     }
                     ?>

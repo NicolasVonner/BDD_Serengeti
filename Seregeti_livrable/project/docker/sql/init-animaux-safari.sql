@@ -42,7 +42,7 @@ INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Ma
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Canidés', 'Otocyon','F', '3');
 
 
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Primate', 'Babouin','M', '0');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin, "dateArrivee") values ('Mammifère', 'Primate', 'Babouin','M', '0', '2019-01-31');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Primate', 'Magot','F', '0');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Primate', 'Cercocèbe','F', '5');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Primate', 'Drill','F', '2');
@@ -94,20 +94,20 @@ INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Ma
 
 
 
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin, "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3', '2001-01-31');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin, "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','M', '3', '2002-01-31');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3');
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '3');
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3');
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin, "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3', '2010-06-07');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '2');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '3');
 
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '3');
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '3');
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '2');
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '2');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin , "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','M', '3', '2015-07-01');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin , "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','M', '3', '2016-10-01');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin, "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','M', '2', '2020-05-01');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin, "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','M', '2', '2019-09-01');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','F', '2');
-INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '1');
+INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin , "dateArrivee") values ('Mammifère', 'Éléphantidés', 'Elephant','M', '1', '2020-12-01');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '0');
 INSERT INTO ANIMAL("classeA", "familleA","especeA", "sexeA", vaccin) values ('Mammifère', 'Éléphantidés', 'Elephant','M', '0');
