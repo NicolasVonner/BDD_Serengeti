@@ -16,3 +16,4 @@ INSERT INTO "soin" ("dateS", "refS", "codeA", "typeS", "commentaireS", "nomZone"
 select * from afficher_soins(True);
 select * from afficher_soins(False, 28,7,'A','Soin_recurent');
 select * from home_stats() as (count_animales int, count_personnels int, count_soins int, count_vegetaux int);
+SELECT "intervention"."nomZone", COUNT(*) FROM "intervention" GROUP BY INTERVENTION."nomZone" ORDER  BY COUNT(*) DESC;
