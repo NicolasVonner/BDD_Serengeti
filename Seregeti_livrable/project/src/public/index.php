@@ -259,16 +259,7 @@
           <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_p"]).'</text>    
 
       </svg>';
-
-
-   
-      
-      /*$req='SELECT COUNT(*), "typeS" FROM SOIN GROUP BY "typeS"';
-      $statement = $conn->prepare($req);
-      $statement->execute();
-      $test_req=$statement->fetchall(); */
-      //var_dump($test_req);
-      
+       
       echo '<svg height="150" width="150" viewBox="0 0 20 20">
       <style type="text/css">
     .st4{font-family:Montserrat", Arial, sans-serif; fill:white;} 
@@ -286,48 +277,13 @@
             <text class="st4" font-family="Montserrat" fill="white" x="10" y="13" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_s"]).'</text>    
             </svg>';
 
-      $req='SELECT INTERVENTION."nomZone",COUNT(*)FROM "intervention" GROUP BY INTERVENTION."nomZone" ORDER  BY COUNT(*) DESC';
 
-      $statement = $conn->prepare($req);
-      $statement->execute();
-      $test_req2=$statement->fetchall();
-      //var_dump($test_req2);
-
-      /*echo '
-        <svg height="500" width="500" viewBox="0 0 20 20">
-        <circle r="10" cx="10" cy="10" fill="#333" />';
-        echo' 
-      
-      <circle r="5" cx="10" cy="10" fill="transparent"
-      stroke="#80534d"
-      stroke-width="10"
-    
-      stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
-      transform="rotate(-90) translate(-20)" />     
-      
-      <circle r="5" cx="10" cy="10" fill="transparent"
-              stroke="red"
-              stroke-width="10"
-              stroke-dasharray="calc(70 * 31.5 / 100) 31.5"
-              transform="rotate(-90) translate(-20)" />
-      <circle r="5" cx="10" cy="10" fill="transparent"
-            stroke="#80534d"
-            stroke-width="10"
-            stroke-dasharray="calc(50 * 31.5 / 100) 31.5"
-            transform="rotate(-90) translate(-20)" />
-      <circle r="5" cx="10" cy="10" fill="transparent"
-            stroke="red"
-            stroke-width="10"
-            stroke-dasharray="calc(70 * 31.5 / 100) 31.5"
-            transform="rotate(-90) translate(-20)" />';   
-      echo '</svg>'; */
-      
 
       echo '<svg height="150" width="150" viewBox="0 0 20 20">
   
       
     <circle r="5" cx="10" cy="10" fill="transparent"
-          stroke="#f96a3e"
+          stroke="#80534d"
           stroke-width="10"
        
           stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
@@ -345,8 +301,40 @@
           <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Végétaux</text>
           <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_v"]).'</text>    
       </svg>';
-    ?>
-    
+
+      $req='SELECT "intervention"."nomZone", COUNT(*) FROM "intervention" GROUP BY INTERVENTION."nomZone" ORDER  BY COUNT(*) DESC';
+
+      $statement = $conn->prepare($req);
+      $statement->execute();
+      $test_req2=$statement->fetchall();
+     
+      echo '</svg>'; 
+  
+    echo'<br /> 
+    <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">nom de la zone</th>
+      <th scope="col">Nombre d\'interventions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">'.$test_req2[0]["nomZone"].'</th>
+      <td>'.$test_req2[0]["count"].'</td>
+    </tr>
+    <tr>
+    <th scope="row">'.$test_req2[1]["nomZone"].'</th>
+    <td>'.$test_req2[1]["count"].'</td>
+    </tr>
+    <tr>
+    <tr>
+    <th scope="row">'.$test_req2[2]["nomZone"].'</th>
+    <td>'.$test_req2[2]["count"].'</td>
+    </tr>
+  </tbody>
+</table> <br />';
+?>
   </div>
   </div>
   </div>
