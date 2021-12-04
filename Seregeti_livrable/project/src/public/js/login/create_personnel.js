@@ -6,13 +6,13 @@ document.getElementById("typeP").addEventListener("change",(event)=>{
     console.log(event.target.value)
     if (event.target.value == "soignant")
     {
-        equipe.disabled = false;
-        specialite.disabled = true;
+        equipe.disabled = true;
+        specialite.disabled = false;
     }
     else if (event.target.value == "garde")
     {
-        equipe.disabled = true;
-        specialite.disabled = false;
+        equipe.disabled = false;
+        specialite.disabled = true;
     }
     console.log("equipe: " +  equipe.disabled + " || specialite: " + specialite.disabled);
 });

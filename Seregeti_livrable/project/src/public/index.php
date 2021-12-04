@@ -250,7 +250,7 @@
     
       
     <circle r="5" cx="10" cy="10" fill="transparent"
-          stroke="#80534d"
+          stroke="#935116"
           stroke-width="10"
        
           stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
@@ -267,13 +267,13 @@
       
         
       <circle r="5" cx="10" cy="10" fill="transparent"
-            stroke="#880808"
+            stroke="#d35400"
             stroke-width="10"
          
             stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
             transform="rotate(-90) translate(-20)" />
-            <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Bléssure </text>   
-            <text class="st4" font-family="Montserrat" fill="white" x="10" y="9" alignment-baseline="central" text-anchor="middle" font-size="2.5">par Braconnier</text>  
+            <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Blessure </text>   
+            <text class="st4" font-family="Montserrat" fill="white" x="10" y="9" alignment-baseline="central" text-anchor="middle" font-size="2.5">de braconnier</text>  
             <text class="st4" font-family="Montserrat" fill="white" x="10" y="13" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_s"]).'</text>    
             </svg>';
 
@@ -283,7 +283,7 @@
   
       
     <circle r="5" cx="10" cy="10" fill="transparent"
-          stroke="#80534d"
+          stroke="#f5b041"
           stroke-width="10"
        
           stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
@@ -293,7 +293,7 @@
       </svg>';
       echo '<svg height="150" width="150" viewBox="0 0 20 20">      
     <circle r="5" cx="10" cy="10" fill="transparent"
-          stroke="#4b7632"
+          stroke="#3A9D23"
           stroke-width="10"
        
           stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
@@ -314,7 +314,7 @@
     <table class="table">
   <thead>
     <tr>
-      <th scope="col">nom de la zone</th>
+      <th scope="col">Zones</th>
       <th scope="col">Nombre d\'interventions</th>
     </tr>
   </thead>
