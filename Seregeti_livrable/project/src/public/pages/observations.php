@@ -29,22 +29,6 @@ session_start();
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   </head>
-  <script>
-    /*  function getval(typeRessencementReport)
-      {
-        //Faire en sorte qu'un seul s'affiche
-        if(typeRessencementReport.value == 'Animal'){
-          console.log("AAAAAAAAAAAAAAAAA")
-        document.getElementById("referralV").style.display = "none"; 
-        document.getElementById("referral").style.display = "inline"; 
-        }
-        else if (typeRessencementReport.value == 'Végétal'){
-         document.getElementById("referral").style.display = "none"; 
-        document.getElementById("referralV").style.display = "inline"; 
-        }       
-      }*/
-    
-    </script>
   <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
@@ -85,7 +69,7 @@ session_start();
             <div class="row">
               <div class="form-group col-md-5">
                 <label for="inputType"> Type </label>
-                <select id="typeRessencementReport" name="typeRessencementReport" class="form-control" onchange="getval(this);">
+                <select id="typeRessencementReport" name="typeRessencementReport" class="form-control">
                   <option selected>Animal</option>
                   <option>Végétal</option>
                 </select>
@@ -107,7 +91,7 @@ session_start();
               </div>
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Référence végétal</label>      
-                  <select class="form-control" name="referral" id="referralV">
+                  <select class="form-control" name="referral" id="referralV" disabled>
                     <?php                    
                       foreach ($resultESVLL as $value) {
                         
@@ -174,12 +158,12 @@ session_start();
                 <p style="margin-left: 10px ; font-weight: bold;"> Date :</p>
                 <div class="form-group col-md-5 margin-right">
                   <label for="inputEmail4"> Du</label>
-                  <input id="dateIntervention1" name="dateIntervention1" type="datetime-local" value="">
+                  <input id="dateIntervention1" name="dateIntervention1" type="datetime-local" value="1975-06-12T19:30">
                 </div>
             
                 <div class="form-group col-md-5">
                   <label for="inputEmail4">Au </label>
-                  <input id="dateIntervention2" name="dateIntervention2" type="datetime-local" value="">
+                  <input id="dateIntervention2" name="dateIntervention2" type="datetime-local" value="2022-06-12T19:30">
                 </div>
             </div>
           </form>

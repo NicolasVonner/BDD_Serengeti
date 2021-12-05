@@ -137,7 +137,7 @@
 
               <div class="form-group col-md-5">
                 <label>Equipe :</label>
-                <select class="form-control" name="equipe" id="equipe">
+                <select class="form-control" name="equipe" id="equipe" disabled>
                 <?php
                   $r=new Connection();
                   $conn = $r->link;
