@@ -3,7 +3,7 @@ require_once('../php/index/connection.php');
 $r=new Connection();
 $conn = $r->link;
 
-$reqESALL='SELECT DISTINCT "codeA" from animal';
+$reqESALL='SELECT DISTINCT "codeA" from "animal" ORDER BY "codeA" ASC';
 
 
 $statementESALL = $conn->prepare($reqESALL);
@@ -39,14 +39,14 @@ session_start();
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="cares.php">Animal cares</a></li>
-            <li><a href="interventions.php">Group interventions</a></li>
-            <li><a href="observations.php">Observations</a></li>
-            <li class="active"><a href="vaccins.php">Vaccins</a></li>
+            <li><a href="../index.php"> Acceuil </a></li>
+            <li><a href="cares.php"> Soins animal</a></li>
+            <li><a href="interventions.php"> Interventions </a></li>
+            <li><a href="observations.php"> Observations </a></li>
+            <li class="active"><a href="vaccins.php"> Vaccins </a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span>S'identifier</a></li>
           </ul>
         </div>
       </div>
@@ -57,7 +57,7 @@ session_start();
         <!-- ZONE D'AJOUT DE SOIN -->
         <div>
           <h4><small>UPDATE ANIMAL VACCIN</small></h4>
-          <h2>Update a vaccin</h2>
+          <h2> Mettre à jour un vaccin </h2>
         </div>
 
         <div>
@@ -66,7 +66,7 @@ session_start();
             <div class="row">
 
               <div class="form-group col-md-5">
-                <label for="inputEmail4">Animal referral</label>
+                <label for="inputEmail4"> Référence animal</label>
                 <select class="form-control" name="referralAnimal" id="referralAnimal" placeholder="Animal referral">
                       <?php
                       

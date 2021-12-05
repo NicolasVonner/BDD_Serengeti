@@ -1,31 +1,31 @@
 <?php
 
-require_once('../php/index/connection.php');
-$r=new Connection();
-$conn = $r->link;
-$reqCLA='SELECT DISTINCT "classeA" from "associationA" ORDER BY "classeA"';
-$reqESA='SELECT DISTINCT "especeA" from "associationA" ORDER BY "especeA"';
-$reqFAA='SELECT DISTINCT "familleA" from "associationA"  ORDER BY "familleA"';
-$req='SELECT DISTINCT "familleA" from animal ORDER BY "familleA"';
-  
-$statement = $conn->prepare($req);
-$statement->execute();
+  require_once('../php/index/connection.php');
+  $r=new Connection();
+  $conn = $r->link;
+  $reqCLA='SELECT DISTINCT "classeA" from "associationA" ORDER BY "classeA"';
+  $reqESA='SELECT DISTINCT "especeA" from "associationA" ORDER BY "especeA"';
+  $reqFAA='SELECT DISTINCT "familleA" from "associationA"  ORDER BY "familleA"';
+  $req='SELECT DISTINCT "familleA" from animal ORDER BY "familleA"';
+    
+  $statement = $conn->prepare($req);
+  $statement->execute();
 
-$statementCLA = $conn->prepare($reqCLA);
-$statementCLA->execute();
+  $statementCLA = $conn->prepare($reqCLA);
+  $statementCLA->execute();
 
-$statementESA = $conn->prepare($reqESA);
-$statementESA->execute();
+  $statementESA = $conn->prepare($reqESA);
+  $statementESA->execute();
 
-$statementFAA = $conn->prepare($reqFAA);
-$statementFAA->execute();
+  $statementFAA = $conn->prepare($reqFAA);
+  $statementFAA->execute();
 
-$result=$statement->fetchall();
-$resultCLA=$statementCLA->fetchall();
-$resultESA=$statementESA->fetchall();
-$resultFAA =$statementFAA->fetchall();
+  $result=$statement->fetchall();
+  $resultCLA=$statementCLA->fetchall();
+  $resultESA=$statementESA->fetchall();
+  $resultFAA =$statementFAA->fetchall();
 
-session_start();
+  session_start();
 
 ?>
 <!DOCTYPE html>
@@ -53,14 +53,14 @@ session_start();
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="cares.php">Animal cares</a></li>
-            <li><a href="interventions.php">Group interventions</a></li>
+            <li><a href="../index.php">Acceuil</a></li>
+            <li><a href="cares.php">Soins animal</a></li>
+            <li><a href="interventions.php">Intervention</a></li>
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
             <li class="active"><a href="animal.php">Animal</a></li>
             <li><a href="associationA.php">associationA</a></li>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="login.php">Gestion personnel</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="login"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -68,16 +68,12 @@ session_start();
         </div>
       </div>
     </nav>
-
-    <h1>Page Animal</h1>
-
-    <p> Ici nous ajoutons et consultons les animaux </p>
     <div class="container-fluid">
       <div class="col-md-5">
         <!-- ZONE D'AJOUT DE RESSENCEMENT -->
         <div>
           <h4><small>ZONE DE D'AJOUT D'UN ANIMAL</small></h4>
-          <h2 id="title-report-espece">Ressencer un nouvelle Animal</h2>
+          <h2 id="title-report-espece">Ressencer un nouvel animal</h2>
         </div>
 
         <div>
@@ -93,7 +89,7 @@ session_start();
         </div>
             <div class="row">
                 <div class="form-group col-md-5">
-                    <label for="especeA">espece Animal</label>
+                    <label for="especeA">Espece animal</label>
                     <select class="form-control" name="especeA" id="especeA">
                       <?php             
                       foreach ($resultESA as $value) {
@@ -107,7 +103,7 @@ session_start();
             
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="familleA">Famille animale</label>
+                <label for="familleA">Famille animal</label>
                 <select class="form-control" name="familleA" id="familleA">
                     <?php                   
                     foreach ($resultFAA  as $value) {
@@ -121,7 +117,7 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputType">classe animale</label>
+                <label for="inputType">Classe animal</label>
                 <select id="classeA" name="classeA" class="form-control">               
                   <?php
                       
@@ -134,7 +130,7 @@ session_start();
             </div>
             <div class="row">        
               <div class="form-group col-md-5">
-                <label for="dateArrivee">Date Arrivée:</label>
+                <label for="dateArrivee">Date Arrivée</label>
                 <input id="dateArrivee" name="dateArrivee" type="datetime-local" value="2021-12-03T23:07" min="1980-01-01T09:00" >
               </div>
             </div> 
@@ -149,7 +145,7 @@ session_start();
         <div>
           <h4><small>ZONE DE CONSULTATION DES ANIMAUX</small></h4>
           <hr>
-          <h2 id="title-consult-espece">Consulter un Animal</h2>
+          <h2 id="title-consult-espece">Consulter un animal</h2>
         </div>
 
         <div>
@@ -157,12 +153,12 @@ session_start();
               <div class="row">
                 <div class="form-group col-md-5">
                   <input class="form-check-input" type="checkbox" name="checkAllInfo" id="checkAnim">
-                  <label class="form-check-label" for="checkAnim">Check All Info</label>
+                  <label class="form-check-label" for="checkAnim">Toutes les infos</label>
                 </div>
               </div>
               <div class="row">
                 <div class="form-group col-md-5">
-                    <label for="inputType"> famille animal</label>
+                    <label for="inputType"> Famille animal</label>
                     <select id="classeAConsult" name="familleA" class="form-control">
                     <?php foreach ($result as $value) {
                         echo '<option value="'.$value["familleA"].'">'.$value["familleA"].'</option>';
@@ -177,7 +173,7 @@ session_start();
                   </div>
                 </div>
               </div>
-            <button type="submit" class="btn btn-primary" id ="submitlsd">  Chercher <span class="glyphicon glyphicon-search"></span></button>           
+            <button type="submit" class="btn btn-primary" id ="submitlsd">Chercher <span class="glyphicon glyphicon-search"></span></button>           
          
           </form>
           

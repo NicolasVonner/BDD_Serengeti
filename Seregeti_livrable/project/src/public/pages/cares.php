@@ -2,9 +2,10 @@
 require_once('../php/index/connection.php');
 $r=new Connection();
 $conn = $r->link;
-$reqESA='SELECT DISTINCT "codeA" from soin';
-$reqESS='SELECT DISTINCT "refS" from soin';
-$reqESALL='SELECT DISTINCT "codeA" from animal';
+$reqESA='SELECT DISTINCT "codeA" from "soin" ORDER BY "codeA"';
+$reqESS='SELECT DISTINCT "refS" from "soignant" ORDER BY "refS"';
+$reqESS2='SELECT DISTINCT "refS" from "soin" ORDER BY "refS"';
+$reqESALL='SELECT DISTINCT "codeA" from animal ORDER BY "codeA"';
 
 $statementESA = $conn->prepare($reqESA);
 $statementESA->execute();
@@ -12,12 +13,17 @@ $statementESA->execute();
 $statementESS = $conn->prepare($reqESS);
 $statementESS->execute();
 
+$statementESS2 = $conn->prepare($reqESS2);
+$statementESS2->execute();
+
 $statementESALL = $conn->prepare($reqESALL);
 $statementESALL->execute();
 
 $resultESA=$statementESA->fetchall();
 
 $resultESS=$statementESS->fetchall();
+
+$resultESS2=$statementESS2->fetchall();
 
 $resultESALL=$statementESALL->fetchall();
 
@@ -49,14 +55,14 @@ session_start();
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Home</a></li>
-            <li class="active"><a href="cares.php">Animal cares</a></li>
-            <li><a href="interventions.php">Group interventions</a></li>
+            <li><a href="../index.php">Acceuil</a></li>
+            <li class="active"><a href="cares.php">Soins animal</a></li>
+            <li><a href="interventions.php">Interventions</a></li>
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span>S'identifier</a></li>
           </ul>
         </div>
       </div>
@@ -66,8 +72,8 @@ session_start();
       <div class="col-md-5">
         <!-- ZONE D'AJOUT DE SOIN -->
         <div>
-          <h4><small>REPORT CARE ZONE</small></h4>
-          <h2>Report a care</h2>
+          <h4><small>ZONE DE DECLARATION DE SOIN</small></h4>
+          <h2>Déclarer un soin</h2>
         </div>
 
         <div>
@@ -76,7 +82,7 @@ session_start();
             <div class="row">
 
               <div class="form-group col-md-5">
-                <label for="inputEmail4">Caregiver referral</label>
+                <label for="inputEmail4">Référence soignant</label>
                 <select class="form-control" name="referralCaregiver" id="referralCaregiver">
                       <?php
                       
@@ -89,7 +95,7 @@ session_start();
               </div>
 
               <div class="form-group col-md-5">
-                <label for="inputPassword4">Animal referral</label>
+                <label for="inputPassword4">Référence animal</label>
                     <select class="form-control" name="referralAnimal" id="referralAnimal">
                       <?php
                       
@@ -105,7 +111,7 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputType">Care type</label>
+                <label for="inputType">Type de soin</label>
                 <select id="typeCareReport" name="typeCareReport" class="form-control">
                   <option selected>Blessure_naturelle</option>
                   <option>Blessure_braconier</option>
@@ -125,14 +131,14 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputEmail4">Date Report</label>
-                <input id="dateCaregiver" name="dateCaregiver" type="datetime-local" value="">
+                <label for="inputEmail4">Date</label>
+                <input id="dateCaregiver" name="dateCaregiver" type="datetime-local" value="2018-06-12T19:30">
               </div>
             </div>
 
             <div class="row">
               <div class="form-group col-md-12">
-                <h4>Leave a Comment:</h4>
+                <h4>Commentaire:</h4>
                 <textarea class="form-control" name="commentaire" rows="3" required></textarea>
               </div>
             </div>
@@ -148,9 +154,9 @@ session_start();
       <div class="col-md-5" style="float: right;">
         <!-- ZONE CONSULTATTION DE SOIN -->
         <div>
-          <h4 id="ConsultCare"><small>CARE REGISTER ZONE</small></h4>
+          <h4 id="ConsultCare"><small>ZONE DE CONSULATION DE SOIN</small></h4>
           <hr>
-          <h2>Consult a care</h2>
+          <h2>Consulter un soin</h2>
         </div>
 
         <div>
@@ -158,17 +164,17 @@ session_start();
             <div class="row">
               <div class="form-group col-md-5">
                 <input class="form-check-input" type="checkbox" name="checkAllInfo" id="checkCare">
-                <label class="form-check-label" for="checkCare">Check All Info</label>
+                <label class="form-check-label" for="checkCare">Toutes les infos</label>
               </div>
             </div>
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputEmail4">Caregiver referral</label>
+                <label for="inputEmail4">Référence soignant</label>
                 <select class="form-control" name="referralCaregiver" id="referralCaregiver">
                       <?php
                       
-                      foreach ($resultESS as $value) {
+                      foreach ($resultESS2 as $value) {
                         
                           echo '<option value="'.$value["refS"].'">'.$value["refS"].'</option>';
                       }
@@ -177,7 +183,7 @@ session_start();
               </div>
 
               <div class="form-group col-md-5">
-                <label for="inputPassword4">Animal referral</label>
+                <label for="inputPassword4">Référence animal</label>
                 <select class="form-control" name="referralAnimal" id="referralAnimal">
                       <?php
                       
@@ -192,7 +198,7 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputType">Care type</label>
+                <label for="inputType">Type de soin</label>
                 <select id="typeCareConsult" name="typeCareConsult" class="form-control">
                   <option selected>Blessure_naturelle</option>
                   <option>Blessure_braconier</option>

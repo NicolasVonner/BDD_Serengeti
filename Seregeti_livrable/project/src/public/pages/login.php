@@ -36,14 +36,14 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="cares.php">Animal cares</a></li>
-            <li><a href="interventions.php">Group interventions</a></li>
+            <li><a href="../index.php">Acceuil</a></li>
+            <li><a href="cares.php">Soins animal</a></li>
+            <li><a href="interventions.php">Interventions</a></li>
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
             <li><a href="animal.php">Animal</a></li>
             <li><a href="associationA.php">associationA</a></li>
-            <li class="active"><a href="login.php">Login</a></li>
+            <li class="active"><a href="login.php">Gestion personnel</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="login"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
@@ -55,14 +55,12 @@
    
     <br>
     <br>
-    <h1>Page de login</h1>
-    <p>Cette page permet aux responsables de zone de se connecter afin d'accéder à leur espace</p>
-    <p>Les reponsables de zones peuvent consulter les information du personnel (salaire, datearrivee, ....)</p>
+    <h1></h1>
     <div class="grid">
       <div class="col-md-5 center-block login">
         <div class="text-center">
           <h2>Saisir des informations</h2>
-          <h4><small>Information Utilisateur</small></h4>
+          <h4><small>Informations Utilisateur</small></h4>
         </div>
 
         <div>
@@ -71,12 +69,12 @@
             <div class="row">
 
               <div class="form-group col-md-5">
-                <label for="nom">Nom *:</label>
+                <label for="nom">Nom :</label>
                 <input class="form-control" type="text" id="nom" name="nom" required minlength="2" maxlegth="255">
               </div>
 
               <div class="form-group col-md-5">
-                <label for="prenom">Prenom *:</label>
+                <label for="prenom">Prenom :</label>
                 <input class="form-control" type="text" id="prenom" name="prenom" required minlength="2" maxlegth="255">
               </div>
 
@@ -85,12 +83,12 @@
             <div class="row">
 
               <div class="form-group col-md-5">
-                <label for="age">Age * :</label>
+                <label for="age">Age :</label>
                 <input class="form-control" type="number" id="age" name="age" min="0" max="100" value="23">
               </div>
 
               <div class="form-group col-md-5">
-                <label for="sexe">Sexe * :</label>
+                <label for="sexe">Sexe :</label>
                 <div>
                   <input type="radio" name="sexeP" value="M" checked> Homme
                   <input type="radio" name="sexeP" value="F"> Femme
@@ -101,11 +99,11 @@
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="salaire">Salaire * :</label>
+                <label for="salaire">Salaire :</label>
                 <input class="form-control" type="number" id="salaire" name="salaire" min="200" max="10000" value="1500">
               </div>
               <div class="form-group col-md-5">
-                <label>type de personel</label>
+                <label>Type de personnel :</label>
                 <select class="form-control" name="typeP" id="typeP">
                     <option value="soignant">Soignant</option>
                     <option value="garde">Garde</option>
@@ -116,12 +114,12 @@
             <div class="row">
 
               <div class="form-group col-md-5">
-                <label>Date d'arrivée</label>
+                <label>Date d'arrivée :</label>
                 <input id="dateArrivee" name="dateArrivee" type="datetime-local" value="2021-10-07T20:00">
               </div>
                 
               <div class="form-group col-md-5">
-                <label>Type de contract</label>
+                <label>Type de contrat :</label>
                 <select class="form-control" name="typeC" id="typeC">
                     <option value="CDI">CDI</option>
                     <option value="CDD">CDD</option>
@@ -133,12 +131,12 @@
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="specialite">Spécialité *:</label>
+                <label for="specialite">Spécialité :</label>
                 <input class="form-control" type="text" id="specialite" name="specialite" required minlength="2" maxlegth="255" disabled>
               </div>
 
               <div class="form-group col-md-5">
-                <label>Equipe</label>
+                <label>Equipe :</label>
                 <select class="form-control" name="equipe" id="equipe">
                 <?php
                   $r=new Connection();
@@ -153,7 +151,7 @@
                 ?>
                 </select>
               </div>
-            </div>
+            </div>      
           </form>
           <button class="btn btn-primary btn-block" onclick="envoyerPersonnel();">Envoyer</button>
           <div id="create-personnel">
@@ -162,12 +160,10 @@
         </div>   
       </div>
 
-
       <div class="container text-center">    
-        <h3>Soignant :</h3><br>
+        <h3>Soignants :</h3><br>
         <?php
-        
-        
+              
           $req='SELECT "codeP","nom", "prenom", "age", "sexeP", "typeContrat", "salaire", "dateArrivee", soignant."specialite" FROM personnel, soignant WHERE personnel."codeP"=soignant."refS"';
           $statementS = $conn->prepare($req);
           $statementS->execute();

@@ -28,17 +28,17 @@
   <body>
     <div class="container-login">
       <div class="col-md-5 login">
-        <h2 class="text-center">Login In</h2>
+        <h2 class="text-center">Identifiez vous</h2>
         <form action="http://localhost:8000/php/requete/user_space/mdp.php" method="post">
           <div class="form-group">
-            <label for="exampleInputEmail1">login</label>
-            <input name="login" type="number" class="form-control" id="login" aria-describedby="LoginlHelp" placeholder="Enter login" maxlength="16">
+            <label for="exampleInputEmail1">Identifiant</label>
+            <input name="login" type="number" class="form-control" id="login" aria-describedby="LoginlHelp" placeholder="Identifiant" maxlength="16">
           </div>
           <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input name="mdp" type="password" class="form-control" id="mdp1" placeholder="Password">
+            <label for="exampleInputPassword1">Mot de passe</label>
+            <input name="mdp" type="password" class="form-control" id="mdp1" placeholder="Mot de passe">
           </div>
-          <button type="submit" class="btn btn-primary">connexion</button>
+          <button type="submit" class="btn btn-primary">Connexion</button>
         </form>
       </div>
     </div>

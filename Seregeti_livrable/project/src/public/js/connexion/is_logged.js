@@ -6,7 +6,7 @@ let setLoginTag = (userId, path = "") => {
         setLoggedLiNav(userId, path);
     let userHTML = userId != null ?
     `<div class="div-login"><span style="color:white;">${userId}  </span><span class="glyphicon glyphicon-user icon-size"></span><a href="../../php/index/deconnection.php">Déconnection</a></div>` :
-    `<a href="${path}connexion.php"><span class="glyphicon glyphicon-log-in"></span> Login</a>`;
+    `<a href="${path}connexion.php"><span class="glyphicon glyphicon-log-in"></span> S'identifier</a>`;
     loginElement.innerHTML = userHTML.trim();
 };
 
@@ -15,7 +15,7 @@ let setLoggedLiNav = (userId, path) => {
     let listOngletNav = [
         {href:`${path}animal.php`, label:"Animal"},
         {href:`${path}associationA.php`, label:"associationA"},
-        {href:`${path}login.php`, label:"Login"}
+        {href:`${path}login.php`, label:"Gestion personnel"}
         
     ];
 

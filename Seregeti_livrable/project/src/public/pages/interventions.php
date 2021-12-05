@@ -37,14 +37,14 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="cares.php">Animal cares</a></li>
-            <li class="active"><a href="interventions.php">Group interventions</a></li>
+            <li><a href="../index.php">Acceuil</a></li>
+            <li><a href="cares.php">Soins animal</a></li>
+            <li class="active"><a href="interventions.php">Interventions</a></li>
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> S'identifier</a></li>
           </ul>
         </div>
       </div>
@@ -65,7 +65,7 @@
 
               <div class="form-group col-md-5">
                 <label for="inputEmail4">Date Report</label>
-                <input id="dateIntervention" name="dateIntervention" type="datetime-local" value="">
+                <input id="dateIntervention" name="dateIntervention" type="datetime-local" value="2018-06-12T19:30">
               </div>
   
             </div>
@@ -98,11 +98,10 @@
 
             <div class="row">
               <div class="form-group col-md-12">
-                <h4>Leave a Comment:</h4>
+                <h4>Zone de commentaire:</h4>
                 <textarea class="form-control" name="commentaire" rows="3" required></textarea>
               </div>
             </div>
-            
           </form> 
           <button class="btn btn-primary" onclick="envoyerFormulaireReport();">Envoyer</button>
           <div id="report-intervention">
@@ -121,27 +120,26 @@
 
         <div>
           <form id="consult">
-            <div class="row">
-              <div class="form-group col-md-5">
-                <input class="form-check-input" type="checkbox" name="checkAllInfo" id="checkIntervention">
-                <label class="form-check-label" for="checkIntervention">Check All Info</label>
+              <div class="row">
+                <div class="form-group col-md-5">
+                  <input class="form-check-input" type="checkbox" name="checkAllInfo" id="checkIntervention">
+                  <label class="form-check-label" for="checkIntervention">Toutes les infos</label>
+                </div>
               </div>
-            </div>
 
-            <div class="row">
-              <div class="form-group col-md-5">
-                <label for="inputEmail4">Date Report</label>
-                <input id="dateIntervention1" name="dateIntervention1" type="datetime-local" value="">
+              <div class="row">
+                <p style="margin-left: 10px ; font-weight: bold;"> Date :</p>
+                <div class="form-group col-md-5">
+                  <label for="inputEmail4">Du</label>
+                  <input id="dateIntervention1" name="dateIntervention1" type="datetime-local" value="1975-06-12T19:30">
+                </div>
+
+                <div class="form-group col-md-5">
+                  <label for="inputEmail4">au</label>
+                  <input id="dateIntervention2" name="dateIntervention2" type="datetime-local" value="2022-06-12T19:30">
+                </div>
+
               </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group col-md-5">
-                <label for="inputEmail4">Date Report</label>
-                <input id="dateIntervention2" name="dateIntervention2" type="datetime-local" value="">
-              </div>
-            </div>
-
           </form>
           <button class="btn btn-primary" onclick="envoyerFormulaireConsult();">Chercher</button>
         </div>

@@ -3,9 +3,9 @@ require_once('../php/index/connection.php');
 $r=new Connection();
 $conn = $r->link;
 
-$reqESALL='SELECT "codeA" from animal';
+$reqESALL='SELECT "codeA" from "animal" ORDER BY "codeA" ASC';
 
-$reqESVLL='SELECT "codeV" from vegetal';
+$reqESVLL='SELECT "codeV" from "vegetal" ORDER BY "codeV" ASC';
 
 $statementESALL = $conn->prepare($reqESALL);
 $statementESALL->execute();
@@ -58,14 +58,14 @@ session_start();
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="cares.php">Animal cares</a></li>
-            <li><a href="interventions.php">Group interventions</a></li>
+            <li><a href="../index.php">Acceuil</a></li>
+            <li><a href="cares.php">Soins animal</a></li>
+            <li><a href="interventions.php">Interventions</a></li>
             <li class="active"><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li id="login"><a href="connexion.php"><span class="glyphicon glyphicon-log-in"></span> S'identifier</a></li>
           </ul>
         </div>
       </div>
@@ -84,7 +84,7 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputType">Type d'individue</label>
+                <label for="inputType"> Type </label>
                 <select id="typeRessencementReport" name="typeRessencementReport" class="form-control" onchange="getval(this);">
                   <option selected>Animal</option>
                   <option>Végétal</option>
@@ -94,7 +94,7 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputEmail4">Referral</label>
+                <label for="inputEmail4">Référence</label>
                 <select class="form-control" name="referral" id="referral">
                       <?php
                       
@@ -128,8 +128,8 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputEmail4">Date Report</label>
-                <input id="dateRessencement" name="dateRessencement" type="datetime-local" value="">
+                <label for="inputEmail4">Date de l'observation</label>
+                <input id="dateRessencement" name="dateRessencement" type="datetime-local" value="2021-06-12T19:30">
               </div>
 
             </div>
@@ -156,11 +156,11 @@ session_start();
             <div class="row">
               <div class="form-group col-md-5">
                 <input class="form-check-input" type="checkbox" name="checkAllInfo" id="checkObservation">
-                <label class="form-check-label" for="checkObservation">Check All Info</label>
+                <label class="form-check-label" for="checkObservation">Toutes les infos</label>
               </div>
 
               <div class="form-group col-md-5">
-                <label for="inputType">Type d'individue</label>
+                <label for="inputType"> Type </label>
                 <select id="typeRessencementConsult" name="typeRessencementConsult" class="form-control">
                   <option selected>Animal</option>
                   <option>Végétal</option>
@@ -168,21 +168,18 @@ session_start();
               </div>
 
             </div>
-
             <div class="row">
-              <div class="form-group col-md-5 margin-right">
-                <label for="inputEmail4"> From Date 1 To</label>
-                <input id="dateIntervention1" name="dateIntervention1" type="datetime-local" value="">
-              </div>
+                <p style="margin-left: 10px ; font-weight: bold;"> Date :</p>
+                <div class="form-group col-md-5 margin-right">
+                  <label for="inputEmail4"> Du</label>
+                  <input id="dateIntervention1" name="dateIntervention1" type="datetime-local" value="">
+                </div>
+            
+                <div class="form-group col-md-5">
+                  <label for="inputEmail4">Au </label>
+                  <input id="dateIntervention2" name="dateIntervention2" type="datetime-local" value="">
+                </div>
             </div>
-
-            <div class="row">
-              <div class="form-group col-md-5">
-                <label for="inputEmail4">Date 2</label>
-                <input id="dateIntervention2" name="dateIntervention2" type="datetime-local" value="">
-              </div>
-            </div>
-
           </form>
           <button class="btn btn-primary" onclick="envoyerFormulaireConsult();">Chercher</button>
         </div>

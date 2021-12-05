@@ -45,6 +45,8 @@ window.envoyerPersonnel = function envoyerPersonnel()
                     if (["text","datetime-local","textarea"].includes(element.type))
                     {
                         element.value = "";
+                        document.location.replace("http://localhost:8000/pages/login.php");
+                     
                     }
                 });
                 let template = document.createElement('template');

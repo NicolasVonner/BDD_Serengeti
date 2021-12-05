@@ -28,14 +28,14 @@
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php">Home</a></li>
-            <li><a href="./pages/cares.php">Animal cares</a></li>
-            <li><a href="./pages/interventions.php">Group interventions</a></li>
+            <li class="active"><a href="index.php">Acceuil</a></li>
+            <li><a href="./pages/cares.php">Soins animal</a></li>
+            <li><a href="./pages/interventions.php">Interventions</a></li>
             <li><a href="./pages/observations.php">Observations</a></li>
             <li><a href="./pages/vaccins.php">Vaccins</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li id="login"><a href="./pages/connexion.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li id="login"><a href="./pages/connexion.php"><span class="glyphicon glyphicon-log-in"></span> S'identifier</a></li>
           </ul>
         </div>
       </div>
@@ -248,23 +248,22 @@
       echo '<svg height="150" width="150" viewBox="0 0 20 20">
  
     
-      
-    <circle r="5" cx="10" cy="10" fill="transparent"
-          stroke="#935116"
-          stroke-width="10"
-       
-          stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
-          transform="rotate(-90) translate(-20)" />
-          <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Employés</text>
-          <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_p"]).'</text>    
+          
+        <circle r="5" cx="10" cy="10" fill="transparent"
+              stroke="#935116"
+              stroke-width="10"
+          
+              stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+              transform="rotate(-90) translate(-20)" />
+              <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Employés</text>
+              <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_p"]).'</text>    
 
-      </svg>';
+          </svg>';
        
       echo '<svg height="150" width="150" viewBox="0 0 20 20">
-      <style type="text/css">
-    .st4{font-family:Montserrat", Arial, sans-serif; fill:white;} 
-    </style>
-      
+        <style type="text/css">
+      .st4{font-family:Montserrat", Arial, sans-serif; fill:white;} 
+      </style>
         
       <circle r="5" cx="10" cy="10" fill="transparent"
             stroke="#880808"
@@ -278,29 +277,28 @@
             </svg>';
 
 
-
       echo '<svg height="150" width="150" viewBox="0 0 20 20">
   
-      
-    <circle r="5" cx="10" cy="10" fill="transparent"
-          stroke="#f5b041"
-          stroke-width="10"
-       
-          stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
-          transform="rotate(-90) translate(-20)" />
-          <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Animaux</text>
-          <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_a"]).'</text>    
-      </svg>';
-      echo '<svg height="150" width="150" viewBox="0 0 20 20">      
-    <circle r="5" cx="10" cy="10" fill="transparent"
-          stroke="#3A9D23"
-          stroke-width="10"
-       
-          stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
-          transform="rotate(-90) translate(-20)" />
-          <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Végétaux</text>
-          <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_v"]).'</text>    
-      </svg>';
+          
+        <circle r="5" cx="10" cy="10" fill="transparent"
+              stroke="#f5b041"
+              stroke-width="10"
+          
+              stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+              transform="rotate(-90) translate(-20)" />
+              <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Animaux</text>
+              <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_a"]).'</text>    
+          </svg>';
+          echo '<svg height="150" width="150" viewBox="0 0 20 20">      
+        <circle r="5" cx="10" cy="10" fill="transparent"
+              stroke="#3A9D23"
+              stroke-width="10"
+          
+              stroke-dasharray="calc(100 * 31.5 / 100) 31.5"
+              transform="rotate(-90) translate(-20)" />
+              <text class="st4" font-family="Montserrat" fill="white" x="10" y="6" alignment-baseline="central" text-anchor="middle" font-size="3">Végétaux</text>
+              <text class="st4" font-family="Montserrat" fill="white" x="10" y="11" alignment-baseline="central" text-anchor="middle" font-size="4">'.strval($test_req[0]["count_v"]).'</text>    
+          </svg>';
 
       $req='SELECT "intervention"."nomZone", COUNT(*) FROM "intervention" GROUP BY INTERVENTION."nomZone" ORDER  BY COUNT(*) DESC';
 
@@ -311,29 +309,29 @@
       echo '</svg>'; 
   
     echo'<br /> 
-    <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Zones</th>
-      <th scope="col">Nombre d\'interventions</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">'.$test_req2[0]["nomZone"].'</th>
-      <td>'.$test_req2[0]["count"].'</td>
-    </tr>
-    <tr>
-    <th scope="row">'.$test_req2[1]["nomZone"].'</th>
-    <td>'.$test_req2[1]["count"].'</td>
-    </tr>
-    <tr>
-    <tr>
-    <th scope="row">'.$test_req2[2]["nomZone"].'</th>
-    <td>'.$test_req2[2]["count"].'</td>
-    </tr>
-  </tbody>
-</table> <br />';
+            <table class="table" style="background: #f4d03f ; border: 2px solid #7b241c ;margin-left: 50px;" >
+          <thead>
+            <tr>
+              <th scope="col">Zones</th>
+              <th scope="col">Nombre d\'interventions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">'.$test_req2[0]["nomZone"].'</th>
+              <td>'.$test_req2[0]["count"].'</td>
+            </tr>
+            <tr>
+            <th scope="row">'.$test_req2[1]["nomZone"].'</th>
+            <td>'.$test_req2[1]["count"].'</td>
+            </tr>
+            <tr>
+            <tr>
+            <th scope="row">'.$test_req2[2]["nomZone"].'</th>
+            <td>'.$test_req2[2]["count"].'</td>
+            </tr>
+          </tbody>
+        </table> <br />';
 ?>
   </div>
   </div>

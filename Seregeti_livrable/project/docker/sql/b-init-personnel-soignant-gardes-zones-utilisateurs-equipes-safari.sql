@@ -4,7 +4,7 @@ INSERT INTO PERSONNEL("nom", "prenom", "age", "sexeP", "typeContrat", "salaire")
 INSERT INTO SOIGNANT ("refS", "specialite") VALUES (2, 'Bovidés');
 INSERT INTO PERSONNEL("nom", "prenom", "age", "sexeP", "typeContrat", "salaire") values('Weaver', 'Sigourney', 23, 'F',  'CDI', 1500);
 INSERT INTO SOIGNANT ("refS", "specialite") VALUES (3, 'Giraffidés');
-INSERT INTO PERSONNEL("nom", "prenom", "age", "sexeP", "typeContrat", "salaire", "dateArrivee") values('Anderson', 'Sony', 40, 'M', 'CDI', 1500, '2009-01-07');
+INSERT INTO PERSONNEL("nom", "prenom", "age", "sexeP", "typeContrat", "salaire", "dateArrivee") values('Adri', 'Sony', 40, 'M', 'CDI', 1500, '2009-01-07');
 INSERT INTO SOIGNANT ("refS", "specialite") VALUES (4, 'Rhinocerotoidea');
 INSERT INTO PERSONNEL("nom", "prenom", "age", "sexeP", "typeContrat", "salaire") values('Toko-Ekambi', 'Karl', 43, 'M', 'CDI', 1500);
 INSERT INTO SOIGNANT ("refS", "specialite") VALUES (5, 'Éléphantidés');

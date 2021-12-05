@@ -26,14 +26,14 @@ session_start();
         </div>
         <div class="collapse navbar-collapse" id="myNavbar">
           <ul class="nav navbar-nav">
-            <li><a href="../index.php">Home</a></li>
-            <li><a href="cares.php">Animal cares</a></li>
-            <li><a href="interventions.php">Group interventions</a></li>
+            <li><a href="../index.php">Acceuil</a></li>
+            <li><a href="cares.php">Soins animal</a></li>
+            <li><a href="interventions.php">Interventions</a></li>
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
             <li><a href="animal.php">Animal</a></li>
             <li class="active"><a href="associationA.php">associationA</a></li>
-            <li><a href="login.php">Login</a></li>
+            <li><a href="login.php">Gestion personnel</a></li>
             
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -42,10 +42,6 @@ session_start();
         </div>
       </div>
     </nav>
-
-    <h1>Page  associationA</h1>
-
-    <p> Ici nous ajoutons les nouvelles espece présente dans le parc</p>
     <div class="container-fluid">
       <div class="col-md-5">
         <!-- ZONE D'AJOUT DE RESSENCEMENT -->
@@ -61,7 +57,7 @@ session_start();
         </div>
             <div class="row">
                 <div class="form-group col-md-5">
-                    <label for="especeA">espece Animal</label>
+                    <label for="especeA">Espece animal</label>
                     <input type="text" required
                   minlength="2" maxlength="255"class="form-control" name="especeA" id="especeA" value="Elephant d'Afrique">
                   </div>
@@ -69,7 +65,7 @@ session_start();
             
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="familleA">Famille animale</label>
+                <label for="familleA">Famille animal</label>
                 <input type="text" required
                   minlength="2" maxlength="255" class="form-control" name="familleA" id="familleA" value="Éléphantidés">
 
@@ -79,7 +75,7 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputType">classe animale</label>
+                <label for="inputType">Classe animal</label>
                 <input type="text" required
                   minlength="2" maxlength="255"  id="classeA" name="classeA" class="form-control" value="Mammifère">
               </div>
