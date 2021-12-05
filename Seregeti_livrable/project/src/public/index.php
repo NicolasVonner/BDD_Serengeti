@@ -267,7 +267,7 @@
       
         
       <circle r="5" cx="10" cy="10" fill="transparent"
-            stroke="#d35400"
+            stroke="#880808"
             stroke-width="10"
          
             stroke-dasharray="calc(100 * 31.5 / 100) 31.5"

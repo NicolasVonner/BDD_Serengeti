@@ -32,8 +32,9 @@ session_start();
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
             <li><a href="animal.php">Animal</a></li>
-            <li><a href="login.php">Login</a></li>
             <li class="active"><a href="associationA.php">associationA</a></li>
+            <li><a href="login.php">Login</a></li>
+            
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li id="login"><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>

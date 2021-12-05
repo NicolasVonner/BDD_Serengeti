@@ -59,6 +59,7 @@ session_start();
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
             <li class="active"><a href="animal.php">Animal</a></li>
+            <li><a href="associationA.php">associationA</a></li>
             <li><a href="login.php">Login</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -137,11 +138,12 @@ session_start();
                 <input id="dateArrivee" name="dateArrivee" type="datetime-local" value="2021-12-03T23:07" min="1980-01-01T09:00" >
               </div>
             </div> 
-          </form>
-              <button type="submit" class="btn btn-primary"> Envoyer <span class="glyphicon glyphicon-plus"></span></button>
+          
+              <button type="submit" class="btn btn-primary"> Créer <span class="glyphicon glyphicon-plus"></span></button>
         </div>   
+        </form>
       </div>
-
+      
       <div class="col-md-5" style="float: right;">
         <!-- ZONE CONSULTATTION DE RESSENCEMENT -->
         <div>

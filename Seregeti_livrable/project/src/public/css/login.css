@@ -29,7 +29,6 @@ html, body{
   }
 
   .login {
-    background-color: rgba(0, 255, 255, 0.5);
     border-radius: 30px;
     border-style: solid;
     border-color: black;
@@ -37,7 +36,6 @@ html, body{
   }
 
   .table {
-    background-color: rgba(100, 100, 100, 0.5);
     border-style: solid;
     border-color: grey;
   }
@@ -47,4 +45,8 @@ html, body{
   footer {
     background-color:#333;
       color: #9d9d9d;
+  }
+
+  .glyphicon-user {
+    color:ghostwhite;
   }

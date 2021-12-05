@@ -1,5 +1,5 @@
 <?php
-if(strlen($_POST['login']>16)){
+if(strlen($_POST['login'])>17){
     echo '<script language="Javascript"> document.location.replace("http://localhost:8000/pages/connexion.php?error=2");</script>';
 }
 else{
@@ -38,11 +38,6 @@ else{
     if (count($test_req)>0){ //si la requête n'est pas vide
         $resultat=$statement->fetchAll(); //covertie l'objet en tableau
         $_SESSION['user_id']=$resultat[0]["identifiant"];
-        $req='SELECT "prenom" from personnel WHERE "codeP"=?';  
-        $statement = $conn->prepare($req);
-        $statement->bindParam(1, $_SESSION["utilisateur"],PDO::PARAM_INT);
-        $resultat=$statement->fetchAll();
-        $_SESSION["utilisateur"] = $resultat[0]["prenom"];
         $jeton = hash("sha256", uniqid(mt_rand(), true));
         $_SESSION['jeton'] = $jeton;
         $time = new DateTime;
@@ -51,13 +46,13 @@ else{
         
         echo '<script language="Javascript">
         document.location.replace("http://localhost:8000/pages/login.php");
-        </script>'; 
+        </script>';
         //header('Location: ../../pages/login.php'); //conection réussi on redirige vers l'espace responsable 
     } 
     else {
         echo '<script language="Javascript">
         document.location.replace("http://localhost:8000/pages/connexion.php?error=1");
-        </script>'; 
+        </script>';
         //header('Location: ../../pages/connexion.php?error=1'); //on renvoi vers la page de connection avec l'erreur en paramètre d'url afin d'uttiliser la méthode get pour afficher l'erreur
     }
     

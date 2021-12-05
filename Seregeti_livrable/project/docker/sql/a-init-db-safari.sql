@@ -206,6 +206,7 @@ DROP TRIGGER IF EXISTS verifyClasseSoignantGarde on soignant;
 DROP TRIGGER IF EXISTS verifyClasseSoigniantReponsable on soignant;
 DROP TRIGGER IF EXISTS verifyClasseGardeSoigniant on garde;
 DROP TRIGGER IF EXISTS verifyClasseGardeReponsable on garde;
+DROP TRIGGER IF EXISTS verifyAgeLimite on personnel;
 
 CREATE OR REPLACE FUNCTION verifyClasseA()
 RETURNS trigger
@@ -310,3 +311,30 @@ ON garde
 FOR EACH ROW
 EXECUTE PROCEDURE verifyClasseGardeSoigniant();
 
+
+CREATE OR REPLACE FUNCTION verify_age(age integer) 
+RETURNS boolean
+As $$
+BEGIN
+  return (SELECT age < 75);
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION verifyAgeLimite() 
+RETURNS trigger
+As $$
+BEGIN
+  IF (verify_age(new.age) = true) THEN
+    RETURN NEW;
+  ELSE 
+    RAISE EXCEPTION 'Personne de plus de 75 ans.';
+  END IF;
+  RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER verifyAgeLimite
+BEFORE INSERT OR UPDATE
+ON personnel
+FOR EACH ROW
+EXECUTE PROCEDURE verifyAgeLimite();

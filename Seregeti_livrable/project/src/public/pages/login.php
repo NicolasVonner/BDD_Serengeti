@@ -42,6 +42,7 @@
             <li><a href="observations.php">Observations</a></li>
             <li><a href="vaccins.php">Vaccins</a></li>
             <li><a href="animal.php">Animal</a></li>
+            <li><a href="associationA.php">associationA</a></li>
             <li class="active"><a href="login.php">Login</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
