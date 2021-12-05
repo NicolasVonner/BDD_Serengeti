@@ -94,7 +94,7 @@ session_start();
 
             <div class="row">
               <div class="form-group col-md-5">
-                <label for="inputEmail4">Référence</label>
+                <label for="inputEmail4">Référence animal</label>
                 <select class="form-control" name="referral" id="referral">
                       <?php
                       
@@ -103,16 +103,18 @@ session_start();
                           echo '<option value="'.$value["codeA"].'">'.$value["codeA"].'</option>';
                       }
                       ?>
-                  </select>
-                  <!-- <select class="form-control" name="referral" id="referralV">
-                    <?php
-                      
-                      /*foreach ($resultESVLL as $value) {
+                </select>
+              </div>
+              <div class="form-group col-md-5">
+                <label for="inputEmail4">Référence végétal</label>      
+                  <select class="form-control" name="referral" id="referralV">
+                    <?php                    
+                      foreach ($resultESVLL as $value) {
                         
                           echo '<option value="'.$value["codeV"].'">'.$value["codeV"].'</option>';
-                      }*/
+                      }
                       ?> 
-                  </select> -->
+                  </select>
               </div>
 
               <div class="form-group col-md-5">

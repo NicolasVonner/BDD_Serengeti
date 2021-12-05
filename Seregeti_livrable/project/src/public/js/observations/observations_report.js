@@ -5,10 +5,9 @@ let typeRessencementReport = document.getElementById("typeRessencementReport");
 typeRessencementReport.addEventListener('change',(event)=>{
     let titleReport = document.getElementById("title-report-espece");
     if (event.target.value == "Animal")
-        titleReport.innerHTML = "Ressencer un nouvelle Animal";
+        titleReport.innerHTML = "Ressencer un nouvel Animal";
     else
         titleReport.innerHTML = "Ressencer un nouveau Végétal";
-
 });
 
 window.envoyerFormulaireReport = function envoyerFormulaireReport()
@@ -38,7 +37,8 @@ window.envoyerFormulaireReport = function envoyerFormulaireReport()
                 formulaire.forEach((element)=>{
                     if (["text","datetime-local","textarea"].includes(element.type))
                     {
-                        element.value = "";
+                      element.value = "";
+                        document.location.replace("http://localhost:8000/pages/observations.php");
                     }
                 });
                 let template = document.createElement('template');

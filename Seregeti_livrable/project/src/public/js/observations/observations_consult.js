@@ -13,6 +13,22 @@ document.getElementById("typeRessencementConsult").addEventListener("change",(ev
         titleReport.innerHTML = "Consulter un Végétal";
 });
 
+document.getElementById("typeRessencementReport").addEventListener("change",(event)=>{
+    let animal = document.getElementById("referral");
+    let vegetal = document.getElementById("referralV");
+    console.log(event.target.value)
+    if (event.target.value == "Animal")
+    {
+        vegetal.disabled = true;
+        animal.disabled = false;
+    }
+    else if (event.target.value == "Végétal")
+    {
+        vegetal.disabled = false;
+        animal.disabled = true;
+    }
+    console.log("animal: " +  animal.disabled + " || vegetal: " + vegetal.disabled);
+});
 
 window.envoyerFormulaireConsult = function envoyerFormulaireConsult()
 {
